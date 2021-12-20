@@ -1,0 +1,2 @@
+# MCPlugin
+ A minecraft plugin.
