@@ -1,0 +1,5 @@
+name: Btelnyys-Plugin
+main: btelnyy.plugin.main
+version: 1.0
+api-version: 1.18
+commands:
