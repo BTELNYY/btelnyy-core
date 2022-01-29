@@ -3,3 +3,15 @@ main: btelnyy.plugin.main
 version: 1.0
 api-version: 1.18
 commands:
+   suicide:
+      description: What do you think it does?
+      usage: /suicide
+      permission: btelnyy.command.suicide
+   dc:
+      description: Kicks you from the server.
+      usage: /dc
+      permission: btelnyy.command.dc
+   i: 
+      description: gives you a specific item
+      usage: /i <item>
+      permission: btelnyy.command.i
