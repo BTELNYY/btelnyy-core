@@ -8,8 +8,6 @@ public class main extends JavaPlugin {
     public void onEnable() {
     	System.out.println("Enabling Plugin.");
     	this.getCommand("suicide").setExecutor(new CommandSuicide());
-    	this.getCommand("dc").setExecutor(new CommandDisconnect());
-    	this.getCommand("i").setExecutor(new CommandGive());
     }
     
     
