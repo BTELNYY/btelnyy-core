@@ -1,4 +1,8 @@
 package btelnyy.plugin;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.Random;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -11,8 +15,27 @@ public class CommandSuicide implements CommandExecutor {
 	public boolean onCommand(CommandSender sender, Command command, String arg2, String[] args) {
 		// TODO Auto-generated method stub
 		if(sender instanceof Player ) {
+	    	File f = new File("./plugins/btelnyy/death_msg.txt");
+	    	Path p = Path.of("./plugins/btelnyy/death_msg.txt");
+	    	String deaths = "";
+	    	if(!f.exists()){
+	    	    try {
+					f.createNewFile();
+					sender.sendMessage(ChatColor.RED + "Error: No death_msg.txt exists.");
+				} catch (IOException e) {
+					e.printStackTrace();
+					return true;
+				}
+	    	}else {
+	    		try {
+					deaths = Files.readString(p);
+				} catch (IOException e) {
+					e.printStackTrace();
+					return true;
+				}
+	    	}
 			((Player) sender).setHealth(0);
-			String[] array = { "You committed a Sayori.", "You looked at SCP 096's face.", "You forgot how to breath.", "You pissed me off.", "You were 'cured' of the plague.", "Segmentation Fault (core dumped)", "You blinked in front of SCP 173.", "Tesla gates exist dumbass.", "ouch.", "Crunchy neck.", "You typed 'kill' into console.", "Melted by a highly corrosive substance.", "Broke your back while trying to do a backflip."  };			
+			String[] array = deaths.split("\\r?\\n");
 			Random rand = new Random();
 			int random = rand.nextInt(array.length) + 0;
 			sender.sendMessage(ChatColor.RED + array[random]);

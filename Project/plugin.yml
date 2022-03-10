@@ -1,17 +1,29 @@
-name: Btelnyys-Plugin
+name: btelnyys-plugin
 main: btelnyy.plugin.main
-version: 1.0
+version: 1.1
 api-version: 1.18
 commands:
    suicide:
       description: What do you think it does?
       usage: /suicide
-      permission: btelnyy.command.suicide
+      permission: btelnyy.suicide
    dc:
       description: Kicks you from the server.
       usage: /dc
-      permission: btelnyy.command.dc
-   i: 
-      description: gives you a specific item
-      usage: /i <item>
-      permission: btelnyy.command.i
+      permission: btelnyy.dc
+   vtp:
+      description: Starts a vote to punish a player.
+      usage: /vtp <player> <ban/kick>
+      permission: btelnyy.vote.start
+   voteno:
+      description: Vote no on current vote.
+      usage: /no
+      permission: btelnyy.vote
+   voteyes:
+      description: Vote yes on current vote.
+      usage: /yes
+      permission: btelnyy.vote
+   rules:
+      description: Print server rules.
+      usage: /rules
+      permission: btelnyy.rules
