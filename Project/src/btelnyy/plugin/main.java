@@ -10,6 +10,9 @@ public class main extends JavaPlugin {
 	public static main getInstance(){
 	    return instance;
 	}
+	public static void log(java.util.logging.Level l, String m) {
+		instance.getLogger().log(l, m);
+	}
     @Override
     public void onEnable() {
     	instance = this;

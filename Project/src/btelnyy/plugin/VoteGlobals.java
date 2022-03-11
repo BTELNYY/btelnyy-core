@@ -10,4 +10,5 @@ public class VoteGlobals {
 	public static boolean VoteExists = false;
 	public static String VoteType = "";
 	public static int VoteTimer = 30;
+	public static Player starter = null;
 }

@@ -5,6 +5,8 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import java.util.logging.Level;
+
 import org.bukkit.ChatColor;
 
 public class VoteNo implements CommandExecutor{
@@ -23,6 +25,7 @@ public class VoteNo implements CommandExecutor{
 		VoteGlobals.VoteNo += 1;
 		sender.sendMessage(ChatColor.GREEN + "Vote successful.");
 		VoteGlobals.VotedPlayers.add(s);
+		main.log(Level.INFO, "Player " + s.getName() + " has voted NO to " + VoteGlobals.VoteType + " player " + VoteGlobals.target.getName());
 		return true;
 	}
 };
