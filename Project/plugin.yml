@@ -17,11 +17,11 @@ commands:
       permission: btelnyy.vote.start
    voteno:
       description: Vote no on current vote.
-      usage: /no
+      usage: /voteno
       permission: btelnyy.vote
    voteyes:
       description: Vote yes on current vote.
-      usage: /yes
+      usage: /voteyes
       permission: btelnyy.vote
    rules:
       description: Print server rules.
