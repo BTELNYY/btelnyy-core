@@ -10,7 +10,10 @@ public class CommandVTP implements CommandExecutor {
 
 	@Override
 	public boolean onCommand(CommandSender sender, Command command, String arg2, String[] args) {
-		if(sender instanceof Player ) {
+		if(args.length < 2) {
+			sender.sendMessage(ChatColor.RED + "Error: Invalid syntax. Usage: /vtp <player> <kick/ban");
+			return true;
+		}
 			Player player = Bukkit.getPlayer(args[0]);
 			if(player == null) {
 				sender.sendMessage(ChatColor.RED + "Error: Player not found.");
@@ -31,7 +34,11 @@ public class CommandVTP implements CommandExecutor {
 				VoteGlobals.VoteType = "ban";
 				Bukkit.broadcastMessage(ChatColor.YELLOW + sender.getName() + " wants to ban " + player.getName());
 				VoteGlobals.VoteExists = true;
+			try {
 				new KickPlayer().start(VoteGlobals.VoteTimer);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
 				Bukkit.broadcastMessage(ChatColor.YELLOW + "You have 30 seconds to vote.");
 				break;
 			case "kick":
@@ -42,16 +49,17 @@ public class CommandVTP implements CommandExecutor {
 				VoteGlobals.VoteType = "kick";
 				Bukkit.broadcastMessage(ChatColor.YELLOW + sender.getName() + " wants to kick " + player.getName());
 				VoteGlobals.VoteExists = true;
+			try {
 				new KickPlayer().start(VoteGlobals.VoteTimer);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
 				Bukkit.broadcastMessage(ChatColor.YELLOW + "You have 30 seconds to vote.");
 				break;
 			default:
 				sender.sendMessage(ChatColor.RED + "Error: Invalid punishment.");
 				return true;
 		}
-			
-		}
-		sender.sendMessage(ChatColor.RED + "Error: You must be a player to run this command.");
 		return true;
 	}
 	

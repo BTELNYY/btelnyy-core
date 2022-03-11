@@ -5,11 +5,14 @@ import java.nio.file.Files;
 import java.nio.file.LinkOption;
 import java.nio.file.Path;
 public class main extends JavaPlugin {
-	// TODO Auto-generated method stub
     // Fired when plugin is first enabled
-	
+	private static main instance;
+	public static main getInstance(){
+	    return instance;
+	}
     @Override
     public void onEnable() {
+    	instance = this;
     	//check if our config path exists
     	Path config = Path.of("./plugins/btelnyy");
     	if(Files.notExists(config, LinkOption.NOFOLLOW_LINKS)) {

@@ -1,35 +1,34 @@
 package btelnyy.plugin;
-import java.util.Timer;
-import java.util.TimerTask;
 import org.bukkit.BanList;
 import org.bukkit.BanList.Type;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-public class KickPlayer {
-	Timer timer;
-    public void run(int seconds) {
-        timer = new Timer();
-        timer.schedule(new RemindTask(), seconds*1000); // schedule the task
-   	}
-    public void start(int seconds) {
-    		run(seconds);
+import org.bukkit.entity.Player;
+import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.scheduler.BukkitRunnable;
+public class KickPlayer extends BukkitRunnable {
+    private JavaPlugin plugin = main.getInstance();
+    public void start(int seconds) throws InterruptedException {
+    		runTaskLater(plugin, 600);
     }
-    class RemindTask extends TimerTask {
-        public void run() {
-        	VoteGlobals.VoteExists = false;
-        	BanList BanList = Bukkit.getBanList(Type.NAME);
-        	if(VoteGlobals.VoteNo > VoteGlobals.VoteYes) {
-        		Bukkit.broadcastMessage(ChatColor.GREEN + "Vote passed," + VoteGlobals.target.getName() + "has received a " + VoteGlobals.VoteType);
-        		if(VoteGlobals.VoteType == "kick."){
-        			VoteGlobals.target.kickPlayer(ChatColor.RED + "You were kicked by vote");
-        		};
-        		if(VoteGlobals.VoteType == "ban"){
-        			BanList.addBan(VoteGlobals.target.getName(), ChatColor.RED + "You were banned by vote", null, null);
-        		};
-        	}else{
-        		Bukkit.broadcastMessage(ChatColor.RED + "Vote failed, not enough votes to kick.");
-        	};
-            timer.cancel(); //Terminate the timer thread
-        };
+	@Override
+	public void run() {
+    	VoteGlobals.VoteExists = false;
+    	BanList BanList = Bukkit.getBanList(Type.NAME);
+    	if(VoteGlobals.VoteYes > VoteGlobals.VoteNo) {
+    		Bukkit.broadcastMessage(ChatColor.GREEN + "Vote passed, " + VoteGlobals.target.getName() + " has received a " + VoteGlobals.VoteType);
+    		if(VoteGlobals.VoteType == "kick"){
+    			kick(VoteGlobals.target, ChatColor.RED, "You were kicked by vote");
+    		};
+    		if(VoteGlobals.VoteType == "ban"){
+    			BanList.addBan(VoteGlobals.target.getName(), ChatColor.RED + "You were banned by vote", null, null);
+    			kick(VoteGlobals.target, ChatColor.RED, "You were banned by vote");
+    		};
+    	}else{
+    		Bukkit.broadcastMessage(ChatColor.RED + "Vote failed, not enough votes to kick.");
+    	};
+	}
+    static void kick(Player p, ChatColor Color, String Message) {
+    	p.kickPlayer(Color + Message);
     }
 }
