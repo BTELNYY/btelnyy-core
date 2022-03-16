@@ -1,5 +1,12 @@
 package btelnyy.plugin;
 import org.bukkit.plugin.java.JavaPlugin;
+import btelnyy.plugin.Commands.CommandDisconnect;
+import btelnyy.plugin.Commands.CommandRules;
+import btelnyy.plugin.Commands.CommandSuicide;
+import btelnyy.plugin.VotingSystem.CommandVTP;
+import btelnyy.plugin.VotingSystem.VoteNo;
+import btelnyy.plugin.VotingSystem.VoteYes;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.LinkOption;
@@ -25,6 +32,7 @@ public class main extends JavaPlugin {
 				e.printStackTrace();
 			}
     	}
+    	getServer().getPluginManager().registerEvents(new EventHandle(), this);
     	this.getCommand("suicide").setExecutor(new CommandSuicide());
     	this.getCommand("dc").setExecutor(new CommandDisconnect());
     	this.getCommand("rules").setExecutor(new CommandRules());

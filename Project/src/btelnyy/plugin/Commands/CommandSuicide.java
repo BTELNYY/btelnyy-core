@@ -1,4 +1,4 @@
-package btelnyy.plugin;
+package btelnyy.plugin.Commands;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;

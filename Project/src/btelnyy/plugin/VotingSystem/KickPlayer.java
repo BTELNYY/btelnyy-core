@@ -1,4 +1,4 @@
-package btelnyy.plugin;
+package btelnyy.plugin.VotingSystem;
 import java.util.logging.Level;
 
 import org.bukkit.BanList;
@@ -8,6 +8,8 @@ import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
+
+import btelnyy.plugin.main;
 public class KickPlayer extends BukkitRunnable {
     private JavaPlugin plugin = main.getInstance();
     public void start(int seconds) throws InterruptedException {
@@ -33,7 +35,7 @@ public class KickPlayer extends BukkitRunnable {
     			main.log(Level.INFO, "Player " + VoteGlobals.target.getName() + " has been banned due to vote");
     		};
     	}else{
-    		Bukkit.broadcastMessage(ChatColor.RED + "Vote failed, not enough votes to kick.");
+    		Bukkit.broadcastMessage(ChatColor.RED + "Vote failed, not enough votes to " + VoteGlobals.VoteType + " " + VoteGlobals.target.getName() + ".");
     		main.log(Level.INFO, "Vote failed.");
     		VoteGlobals.VoteExists = false;
     		VoteGlobals.VotedPlayers.clear();

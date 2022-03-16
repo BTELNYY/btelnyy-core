@@ -1,4 +1,4 @@
-package btelnyy.plugin;
+package btelnyy.plugin.VotingSystem;
 import java.util.ArrayList;
 import java.util.List;
 import org.bukkit.entity.Player;

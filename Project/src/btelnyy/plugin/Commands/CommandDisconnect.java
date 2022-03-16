@@ -1,4 +1,4 @@
-package btelnyy.plugin;
+package btelnyy.plugin.Commands;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
