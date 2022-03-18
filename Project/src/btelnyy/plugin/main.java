@@ -1,5 +1,7 @@
 package btelnyy.plugin;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import MOTDHandler.MOTDHandle;
 import btelnyy.plugin.Commands.CommandDisconnect;
 import btelnyy.plugin.Commands.CommandRules;
 import btelnyy.plugin.Commands.CommandSuicide;
@@ -32,7 +34,10 @@ public class main extends JavaPlugin {
 				e.printStackTrace();
 			}
     	}
+    	//event handle
     	getServer().getPluginManager().registerEvents(new EventHandle(), this);
+    	//load MOTD on plugin enable
+    	MOTDHandle.LoadMOTD();
     	this.getCommand("suicide").setExecutor(new CommandSuicide());
     	this.getCommand("dc").setExecutor(new CommandDisconnect());
     	this.getCommand("rules").setExecutor(new CommandRules());
