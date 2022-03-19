@@ -10,6 +10,7 @@ import btelnyy.plugin.main;
 
 import java.util.logging.Level;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 
 public class VoteYes implements CommandExecutor{
@@ -26,14 +27,22 @@ public class VoteYes implements CommandExecutor{
 			return true;
 		}
 		try {
-			if(args[1]) = "-o" && sender.hasPermission(btelnyy.override){
+			if(args[1] == "-o" && sender.hasPermission("btelnyy.vote.override")){
 				override = true;
+			}else if(args[1] == "-o" && !sender.hasPermission("btelnyy.vote.override")) {
+				sender.sendMessage(ChatColor.RED + "Error: You do not have permission to override votes.");
 			}
 		}catch(Exception e) {
-			
+			e.printStackTrace();
 		}
 		switch(VoteOption) {
 		case "yes":
+			if(override) {
+				VoteGlobals.VoteYes += 999;
+				Bukkit.broadcastMessage(ChatColor.YELLOW + "The vote was overriden by " + sender.getName());
+			}else if(args[1] == "-o" && !sender.hasPermission("btelnyy.vote.override")) {
+				sender.sendMessage(ChatColor.RED + "Error: You do not have permission to override votes.");
+			}
 			for(Player p : VoteGlobals.VotedPlayers) {
 				if(p == s) {
 					sender.sendMessage(ChatColor.RED + "Error: You have voted already.");
@@ -46,6 +55,10 @@ public class VoteYes implements CommandExecutor{
 			main.log(Level.INFO, "Player " + s.getName() + " has voted YES to " + VoteGlobals.VoteType + " player " + VoteGlobals.target.getName());
 			return true;
 		case "no":
+			if(override) {
+				VoteGlobals.VoteNo += 999;
+				Bukkit.broadcastMessage(ChatColor.YELLOW + "The vote was overriden by " + sender.getName());
+			}
 			for(Player p : VoteGlobals.VotedPlayers) {
 				if(p == s) {
 					sender.sendMessage(ChatColor.RED + "Error: You have voted already.");
