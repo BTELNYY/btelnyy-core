@@ -10,7 +10,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import btelnyy.plugin.main;
-public class KickPlayer extends BukkitRunnable {
+public class PunishPlayer extends BukkitRunnable {
     private JavaPlugin plugin = main.getInstance();
     public void start(int seconds) throws InterruptedException {
     		runTaskLater(plugin, 600);

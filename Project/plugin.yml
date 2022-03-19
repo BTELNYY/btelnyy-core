@@ -27,3 +27,7 @@ commands:
       description: Print server rules.
       usage: /rules
       permission: btelnyy.rules
+   voterestart:
+      description: Start a vote to restart the server.
+      usage: /voterestart
+      permission: btelnyy.vote.srvrestart

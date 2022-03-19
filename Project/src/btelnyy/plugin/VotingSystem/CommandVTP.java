@@ -45,7 +45,7 @@ public class CommandVTP implements CommandExecutor {
 				VoteGlobals.VoteExists = true;
 				main.log(Level.INFO, s.getName() + " wants to ban " + player.getName());
 			try {
-				new KickPlayer().start(VoteGlobals.VoteTimer);
+				new PunishPlayer().start(VoteGlobals.VoteTimer);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
@@ -62,7 +62,7 @@ public class CommandVTP implements CommandExecutor {
 				VoteGlobals.VoteExists = true;
 				main.log(Level.INFO, s.getName() + " wants to kick " + player.getName());
 			try {
-				new KickPlayer().start(VoteGlobals.VoteTimer);
+				new PunishPlayer().start(VoteGlobals.VoteTimer);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
