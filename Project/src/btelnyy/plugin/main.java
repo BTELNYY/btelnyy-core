@@ -3,11 +3,12 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import MOTDHandler.MOTDHandle;
 import btelnyy.plugin.Commands.CommandDisconnect;
+import btelnyy.plugin.Commands.CommandPing;
 import btelnyy.plugin.Commands.CommandRules;
 import btelnyy.plugin.Commands.CommandSuicide;
 import btelnyy.plugin.VotingSystem.CommandVTP;
-import btelnyy.plugin.VotingSystem.VoteNo;
-import btelnyy.plugin.VotingSystem.VoteYes;
+import btelnyy.plugin.VotingSystem.Vote;
+import btelnyy.plugin.VotingSystem.VoteServerRestart;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -42,8 +43,9 @@ public class main extends JavaPlugin {
     	this.getCommand("dc").setExecutor(new CommandDisconnect());
     	this.getCommand("rules").setExecutor(new CommandRules());
     	this.getCommand("vtp").setExecutor(new CommandVTP());
-    	this.getCommand("voteyes").setExecutor(new VoteYes());
-    	this.getCommand("voteno").setExecutor(new VoteNo());
+    	this.getCommand("vote").setExecutor(new Vote());
+    	this.getCommand("ping").setExecutor(new CommandPing());
+    	this.getCommand("voterestart").setExecutor(new VoteServerRestart());
     }
     
     // Fired when plugin is disabled

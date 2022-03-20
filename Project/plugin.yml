@@ -15,13 +15,9 @@ commands:
       description: Starts a vote to punish a player.
       usage: /vtp <player> <ban/kick>
       permission: btelnyy.vote.start
-   voteno:
-      description: Vote no on current vote.
-      usage: /voteno
-      permission: btelnyy.vote
-   voteyes:
-      description: Vote yes on current vote.
-      usage: /voteyes
+   vote:
+      description: Vote on the current vote
+      usage: /vote <yes/no>
       permission: btelnyy.vote
    rules:
       description: Print server rules.
@@ -31,3 +27,7 @@ commands:
       description: Start a vote to restart the server.
       usage: /voterestart
       permission: btelnyy.vote.srvrestart
+   ping:
+      description: Get your ping to the server.
+      usage: /ping
+      permission: btelnyy.ping
