@@ -3,7 +3,10 @@
 This plugin is most useful for semi-vanilla minecraft survival servers who want to have as little plugins as possible
 This plugin tries to fit in with the classic minecraft look with errors being red and info being yellow.
 
-Features:
+## Config:
+* Coming soon!
+
+## Features:
 > `/suicide` kills the player who sent it along with a random message from `./plugins/btelnyy/death_msg.txt`
 * Permission: `btelnyy.suicide`
 * Used like /kill without needing to worry about players killing others
@@ -19,7 +22,11 @@ Features:
 * Kick punishment permission: `btelnyy.vote.kick`
 * Ban punishment permission: `btelnyy.vote.ban`
 * Usefull for community driven moderation, if you want the community to get rid of hackers without you, you can use this. REVIEW BAN REPORTS!
-> `/voteyes` vote yes
+> `/vote` vote lol
+* Usage: `/vote <yes/no>`
 * Permission: `btelnyy.vote`
-> `/voteno` vote no
-* Permission: `btelnyy.vote`
+> `/voterestart` start a vote to restart the server
+* Permission: `btelnyy.vote.srvrestart`
+> `/ping` show your current ping to the server
+* Permission: `btelnyy.ping`
+
