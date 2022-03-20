@@ -9,33 +9,35 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-public class CommandSuicide implements CommandExecutor {
 
+import btelnyy.plugin.main;
+public class CommandSuicide implements CommandExecutor {
+	public static String[] array = {};
+	public static void LoadMessages() {
+		File f = new File("./plugins/btelnyy/death_msg.txt");
+    	Path p = Path.of("./plugins/btelnyy/death_msg.txt");
+    	String deaths = "";
+    	if(!f.exists()){
+    	    try {
+				f.createNewFile();
+				main.log(java.util.logging.Level.WARNING, "./plugins/btelnyy/death_msg.txt does not exist.");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+    	}else {
+    		try {
+				deaths = Files.readString(p);
+				array = deaths.split("\\r?\\n");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+    	}
+	}
 	@Override
 	public boolean onCommand(CommandSender sender, Command command, String arg2, String[] args) {
 		// TODO Auto-generated method stub
 		if(sender instanceof Player ) {
-	    	File f = new File("./plugins/btelnyy/death_msg.txt");
-	    	Path p = Path.of("./plugins/btelnyy/death_msg.txt");
-	    	String deaths = "";
-	    	if(!f.exists()){
-	    	    try {
-					f.createNewFile();
-					sender.sendMessage(ChatColor.RED + "Error: No death_msg.txt exists.");
-				} catch (IOException e) {
-					e.printStackTrace();
-					return true;
-				}
-	    	}else {
-	    		try {
-					deaths = Files.readString(p);
-				} catch (IOException e) {
-					e.printStackTrace();
-					return true;
-				}
-	    	}
 			((Player) sender).setHealth(0);
-			String[] array = deaths.split("\\r?\\n");
 			Random rand = new Random();
 			int random = rand.nextInt(array.length) + 0;
 			sender.sendMessage(ChatColor.RED + array[random]);

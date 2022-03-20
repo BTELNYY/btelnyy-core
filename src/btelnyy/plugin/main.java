@@ -1,21 +1,16 @@
 package btelnyy.plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import MOTDHandler.MOTDHandle;
-import btelnyy.plugin.Commands.CommandDisconnect;
-import btelnyy.plugin.Commands.CommandPing;
-import btelnyy.plugin.Commands.CommandRules;
-import btelnyy.plugin.Commands.CommandSuicide;
-import btelnyy.plugin.VotingSystem.CommandVTP;
-import btelnyy.plugin.VotingSystem.Vote;
-import btelnyy.plugin.VotingSystem.VoteServerRestart;
+import btelnyy.plugin.MOTDHandler.*;
+import btelnyy.plugin.Commands.*;
+import btelnyy.plugin.VotingSystem.*;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.LinkOption;
 import java.nio.file.Path;
 public class main extends JavaPlugin {
-    // Fired when plugin is first enabled
+	//meant for the server to know what to call when doing bukkit timers
 	private static main instance;
 	public static main getInstance(){
 	    return instance;
@@ -23,6 +18,7 @@ public class main extends JavaPlugin {
 	public static void log(java.util.logging.Level l, String m) {
 		instance.getLogger().log(l, m);
 	}
+	// Fired when plugin is first enabled
     @Override
     public void onEnable() {
     	instance = this;
@@ -39,6 +35,8 @@ public class main extends JavaPlugin {
     	getServer().getPluginManager().registerEvents(new EventHandle(), this);
     	//load MOTD on plugin enable
     	MOTDHandle.LoadMOTD();
+    	//load suicide messages on enable
+    	CommandSuicide.LoadMessages();
     	this.getCommand("suicide").setExecutor(new CommandSuicide());
     	this.getCommand("dc").setExecutor(new CommandDisconnect());
     	this.getCommand("rules").setExecutor(new CommandRules());
@@ -47,7 +45,7 @@ public class main extends JavaPlugin {
     	this.getCommand("ping").setExecutor(new CommandPing());
     	this.getCommand("voterestart").setExecutor(new VoteServerRestart());
     }
-    
+   
     // Fired when plugin is disabled
     @Override
     public void onDisable() {

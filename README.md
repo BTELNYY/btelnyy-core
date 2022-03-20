@@ -30,4 +30,3 @@ This plugin tries to fit in with the classic minecraft look with errors being re
 * Permission: `btelnyy.vote.srvrestart`
 > `/ping` show your current ping to the server
 * Permission: `btelnyy.ping`
-

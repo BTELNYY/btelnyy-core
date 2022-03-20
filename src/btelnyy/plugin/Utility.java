@@ -4,7 +4,7 @@ public class Utility {
 	   public static int ArrayCounter(Object[] o)   
 	   {  
 		   int count = 0;
-	        for(Object i:o)
+	        for(@SuppressWarnings("unused") Object i:o)
 	        {
 	            count++;
 	        }
