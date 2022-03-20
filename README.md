@@ -2,6 +2,7 @@
  A minecraft Plugin.
 This plugin is most useful for semi-vanilla minecraft survival servers who want to have as little plugins as possible
 This plugin tries to fit in with the classic minecraft look with errors being red and info being yellow.
+[Discord for support and updates](https://discord.gg/P22tFkjTm3)
 
 ## Config:
 * Coming soon!
