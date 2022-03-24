@@ -8,8 +8,6 @@ This plugin tries to fit in with the classic minecraft look with errors being re
 * Coming soon!
 
 ## Features:
-> `/suicide` kills the player who sent it along with a random message from `./plugins/btelnyy/death_msg.txt`
-* Permission: `btelnyy.suicide`
 * Used like /kill without needing to worry about players killing others
 > `/rules` prints rules file from `./plugins/btelnyy/rules.txt`
 * Permission: `btelnyy.rules`
@@ -30,3 +28,5 @@ This plugin tries to fit in with the classic minecraft look with errors being re
 * Permission: `btelnyy.vote.srvrestart`
 > `/ping` show your current ping to the server
 * Permission: `btelnyy.ping`
+> `/suicide` kills the player who sent it along with a random message from `./plugins/btelnyy/death_msg.txt`
+* Permission: `btelnyy.suicide`
