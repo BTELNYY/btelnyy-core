@@ -6,11 +6,11 @@ commands:
    suicide:
       description: Kills you instantly.
       usage: /suicide
-      permission: btelnyy.suicide
+      permission: btelnyy.command.suicide
    dc:
       description: Kicks you from the server.
       usage: /dc
-      permission: btelnyy.dc
+      permission: btelnyy.command.dc
    vtp:
       description: Starts a vote to punish a player.
       usage: /vtp <player> <ban/kick>
@@ -22,7 +22,7 @@ commands:
    rules:
       description: Print server rules.
       usage: /rules
-      permission: btelnyy.rules
+      permission: btelnyy.command.rules
    voterestart:
       description: Start a vote to restart the server.
       usage: /voterestart
@@ -30,4 +30,4 @@ commands:
    ping:
       description: Get your ping to the server.
       usage: /ping
-      permission: btelnyy.ping
+      permission: btelnyy.command.ping
