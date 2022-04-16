@@ -10,7 +10,7 @@ public class CommandPing implements CommandExecutor {
 		if(sender instanceof Player) {
 			Player p = (Player) sender;
 			int ping = p.getPing();
-			sender.sendMessage(ChatColor.YELLOW + "Ping: " + ping + "ms");
+			sender.sendMessage(ChatColor.GRAY + "Ping: " + ping + "ms");
 			return true;
 		}else {
 			sender.sendMessage(ChatColor.RED + "Error: You must be a player to run this command.");

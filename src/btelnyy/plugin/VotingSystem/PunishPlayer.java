@@ -9,9 +9,9 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import btelnyy.plugin.main;
+import btelnyy.plugin.Main;
 public class PunishPlayer extends BukkitRunnable {
-    private JavaPlugin plugin = main.getInstance();
+    private JavaPlugin plugin = Main.getInstance();
     public void start(int seconds) throws InterruptedException {
     		runTaskLater(plugin, 600);
     }
@@ -27,16 +27,16 @@ public class PunishPlayer extends BukkitRunnable {
     		VoteGlobals.VoteNo = 0;
     		if(VoteGlobals.VoteType == "kick"){
     			kick(VoteGlobals.target, ChatColor.RED, "You were kicked by vote");
-    			main.log(Level.INFO, "Player " + VoteGlobals.target.getName() + " has been kicked due to vote");
+    			Main.log(Level.INFO, "Player " + VoteGlobals.target.getName() + " has been kicked due to vote");
     		};
     		if(VoteGlobals.VoteType == "ban"){
     			BanList.addBan(VoteGlobals.target.getName(), ChatColor.RED + "You were banned by vote", null, null);
     			kick(VoteGlobals.target, ChatColor.RED, "You were banned by vote");
-    			main.log(Level.INFO, "Player " + VoteGlobals.target.getName() + " has been banned due to vote");
+    			Main.log(Level.INFO, "Player " + VoteGlobals.target.getName() + " has been banned due to vote");
     		};
     	}else{
     		Bukkit.broadcastMessage(ChatColor.RED + "Vote failed, not enough votes to " + VoteGlobals.VoteType + " " + VoteGlobals.target.getName() + ".");
-    		main.log(Level.INFO, "Vote failed.");
+    		Main.log(Level.INFO, "Vote failed.");
     		VoteGlobals.VoteExists = false;
     		VoteGlobals.VotedPlayers.clear();
     		VoteGlobals.VoteYes = 0;

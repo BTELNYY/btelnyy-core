@@ -5,27 +5,29 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Random;
 import org.bukkit.event.server.ServerListPingEvent;
-import btelnyy.plugin.main;
+
+import btelnyy.plugin.Globals;
+import btelnyy.plugin.Main;
 
 public class MOTDHandle {
 	static String motds = "";
 	public static void LoadMOTD() {
-		File f = new File("./plugins/btelnyy/random_motd.txt");
-    	Path p = Path.of("./plugins/btelnyy/random_motd.txt");
+		File f = new File("./plugins/" + Globals.ConfigPath + "/random_motd.txt");
+    	Path p = Path.of("./plugins/" + Globals.ConfigPath + "/random_motd.txt");
     	if(!f.exists()){
     	    try {
 				f.createNewFile();
-				main.log(java.util.logging.Level.INFO, "No MOTD File Exists");
+				Main.log(java.util.logging.Level.INFO, "No MOTD File Exists");
 			} catch (IOException e) {
 				e.printStackTrace();
-				main.log(java.util.logging.Level.SEVERE, "Error parsing MOTD");
+				Main.log(java.util.logging.Level.SEVERE, "Error parsing MOTD");
 			}
     	}else {
     		try {
 				motds = Files.readString(p);
 			} catch (IOException e) {
 				e.printStackTrace();
-				main.log(java.util.logging.Level.SEVERE, "Error reading MOTD file");
+				Main.log(java.util.logging.Level.SEVERE, "Error reading MOTD file");
 			}
     	}
 	}

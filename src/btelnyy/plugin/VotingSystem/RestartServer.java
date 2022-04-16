@@ -6,9 +6,9 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import btelnyy.plugin.main;
+import btelnyy.plugin.Main;
 public class RestartServer extends BukkitRunnable {
-    private JavaPlugin plugin = main.getInstance();
+    private JavaPlugin plugin = Main.getInstance();
     public void start(int seconds) throws InterruptedException {
     		runTaskLater(plugin, 600);
     }

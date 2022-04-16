@@ -10,17 +10,18 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import btelnyy.plugin.main;
+import btelnyy.plugin.Globals;
+import btelnyy.plugin.Main;
 public class CommandSuicide implements CommandExecutor {
 	public static String[] array = {};
 	public static void LoadMessages() {
-		File f = new File("./plugins/btelnyy/death_msg.txt");
-    	Path p = Path.of("./plugins/btelnyy/death_msg.txt");
+		File f = new File("./plugins/" + Globals.ConfigPath + "/death_msg.txt");
+    	Path p = Path.of("./plugins/" + Globals.ConfigPath + "/death_msg.txt");
     	String deaths = "";
     	if(!f.exists()){
     	    try {
 				f.createNewFile();
-				main.log(java.util.logging.Level.WARNING, "./plugins/btelnyy/death_msg.txt does not exist.");
+				Main.log(java.util.logging.Level.WARNING, "./plugins/btelnyy/death_msg.txt does not exist.");
 			} catch (IOException e) {
 				e.printStackTrace();
 			}

@@ -6,7 +6,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import btelnyy.plugin.Utility;
-import btelnyy.plugin.main;
+import btelnyy.plugin.Main;
 
 import java.util.logging.Level;
 
@@ -40,9 +40,9 @@ public class Vote implements CommandExecutor{
 				}
 			}
 			VoteGlobals.VoteYes += 1;
-			sender.sendMessage(ChatColor.GREEN + "Vote successful.");
+			sender.sendMessage(ChatColor.GRAY + "Vote successful.");
 			VoteGlobals.VotedPlayers.add(s);
-			main.log(Level.INFO, "Player " + s.getName() + " has voted YES to " + VoteGlobals.VoteType);
+			Main.log(Level.INFO, "Player " + s.getName() + " has voted YES to " + VoteGlobals.VoteType);
 			return true;
 		case "no":
 			if(override) {
@@ -56,9 +56,9 @@ public class Vote implements CommandExecutor{
 				}
 			}
 			VoteGlobals.VoteNo += 1;
-			sender.sendMessage(ChatColor.GREEN + "Vote successful.");
+			sender.sendMessage(ChatColor.GRAY + "Vote successful.");
 			VoteGlobals.VotedPlayers.add(s);
-			main.log(Level.INFO, "Player " + s.getName() + " has voted NO to " + VoteGlobals.VoteType);
+			Main.log(Level.INFO, "Player " + s.getName() + " has voted NO to " + VoteGlobals.VoteType);
 			return true;
 		default:
 			sender.sendMessage(ChatColor.RED + "Error: Invalid vote option.");

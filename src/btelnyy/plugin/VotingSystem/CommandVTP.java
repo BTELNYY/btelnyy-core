@@ -9,7 +9,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import btelnyy.plugin.main;
+import btelnyy.plugin.Main;
 public class CommandVTP implements CommandExecutor {
 
 	@Override
@@ -43,7 +43,7 @@ public class CommandVTP implements CommandExecutor {
 				VoteGlobals.VoteType = "ban";
 				Bukkit.broadcastMessage(ChatColor.YELLOW + sender.getName() + " wants to ban " + player.getName());
 				VoteGlobals.VoteExists = true;
-				main.log(Level.INFO, s.getName() + " wants to ban " + player.getName());
+				Main.log(Level.INFO, s.getName() + " wants to ban " + player.getName());
 			try {
 				new PunishPlayer().start(VoteGlobals.VoteTimer);
 			} catch (InterruptedException e) {
@@ -60,7 +60,7 @@ public class CommandVTP implements CommandExecutor {
 				VoteGlobals.VoteType = "kick";
 				Bukkit.broadcastMessage(ChatColor.YELLOW + sender.getName() + " wants to kick " + player.getName());
 				VoteGlobals.VoteExists = true;
-				main.log(Level.INFO, s.getName() + " wants to kick " + player.getName());
+				Main.log(Level.INFO, s.getName() + " wants to kick " + player.getName());
 			try {
 				new PunishPlayer().start(VoteGlobals.VoteTimer);
 			} catch (InterruptedException e) {
