@@ -66,7 +66,7 @@ public class CommandVTP implements CommandExecutor {
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-				Bukkit.broadcastMessage(ChatColor.YELLOW + "You have 30 seconds to vote.");
+				Bukkit.broadcastMessage(ChatColor.YELLOW + "You have " + VoteGlobals.VoteTimer +  " seconds to vote.");
 				VoteGlobals.starter = s;
 				break;
 			default:
