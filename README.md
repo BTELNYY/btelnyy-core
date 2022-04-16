@@ -5,8 +5,8 @@ This plugin tries to fit in with the classic minecraft look with errors being re
 [Discord for support and updates](https://discord.gg/P22tFkjTm3)
 
 ## Config:
-* Coming soon!
-
+> `vote_timer` (Int)
+* Set the timer for vote, accepts decimals
 ## Features:
 **WARNING: Bellow data only applies to source code, actual jar data may be different.**
 > `/rules` prints rules file from `./plugins/btelnyy/rules.txt`
