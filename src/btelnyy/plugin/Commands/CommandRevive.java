@@ -9,6 +9,7 @@ import org.bukkit.entity.Player;
 
 import btelnyy.plugin.Globals;
 import btelnyy.plugin.RespawnHandler;
+import btelnyy.plugin.Utility;
 public class CommandRevive implements CommandExecutor {
 	public boolean onCommand(CommandSender sender, Command command, String arg2, String[] args) {
 		if(args.length < 1) {
@@ -26,6 +27,7 @@ public class CommandRevive implements CommandExecutor {
 		}
 		RespawnHandler.RevivePlayer(ReviveTarget);
 		sender.sendMessage(ChatColor.GRAY + "Player " + ReviveTarget.getName() + " has been revived.");
+		Utility.SendToOps("Has revived " + ReviveTarget.getName(), sender);
 		return true;
 	}
 }

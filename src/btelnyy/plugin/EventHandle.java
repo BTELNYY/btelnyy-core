@@ -15,14 +15,22 @@ public class EventHandle implements Listener{
 	}
 	@EventHandler
 	public void onEntityDamage(EntityDamageByEntityEvent event) {
+		if(event.getEntity().getType() != EntityType.PLAYER) {
+			return;
+		}
 		if(event.getDamager().getType() != EntityType.PLAYER) {
 			return;
 		}
+		Player player = (Player) event.getDamager();
+		Player Target = (Player) event.getEntity();
 		if(!Globals.PvpToggled) {
 			event.setCancelled(true);
 			return;
 		}
-		Player player = (Player) event.getDamager();
+		if(Globals.DeadPlayers.contains(Target)) {
+			event.setCancelled(true);
+			return;
+		}
 		if(Globals.DeadPlayers.contains(player)) {
 			event.setCancelled(true);
 			return;
