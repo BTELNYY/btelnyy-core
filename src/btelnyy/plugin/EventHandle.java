@@ -1,6 +1,10 @@
 package btelnyy.plugin;
+import org.bukkit.entity.EntityType;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.server.ServerListPingEvent;
 import btelnyy.plugin.MOTDHandler.*;
 public class EventHandle implements Listener{
@@ -8,5 +12,32 @@ public class EventHandle implements Listener{
 	public void onPing(ServerListPingEvent event) {
 		//handles event and fires at the method
 		MOTDHandle.ChangeMOTD(event);
+	}
+	@EventHandler
+	public void onEntityDamage(EntityDamageByEntityEvent event) {
+		if(event.getDamager().getType() != EntityType.PLAYER) {
+			return;
+		}
+		if(!Globals.PvpToggled) {
+			event.setCancelled(true);
+			return;
+		}
+		Player player = (Player) event.getDamager();
+		if(Globals.DeadPlayers.contains(player)) {
+			event.setCancelled(true);
+			return;
+		}
+	}
+	@EventHandler
+	public void onEntityDeath(EntityDeathEvent event) {
+		//dont trigger unless the entity is a player and hardcore mode is on
+		if(event.getEntityType() != EntityType.PLAYER) {
+			return;
+		}
+		if(!Globals.HardcoreToggled) {
+			return;
+		}
+		Player p = (Player)event.getEntity();
+		RespawnHandler.RespawnPlayer(p, event);
 	}
 }

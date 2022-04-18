@@ -1,2 +1,11 @@
 #vote timer
 vote_timer: 30
+#default pvp toggle (can be changed with /pvp in game)
+default_pvp_toggle: true
+#what should players do when they die in hardcore mode?
+#options: SPECTATOR, GHOST
+on_hardcore_death: "SPECTATOR"
+#should players be teleported to where they died in hardcore mode?
+tp_to_death_hardcore: true
+#show players the death title (YOU DIED! Subtitle: You cannot respawn in hardcore mode)
+show_death_title: true

@@ -12,8 +12,8 @@ import btelnyy.plugin.Main;
 public class MOTDHandle {
 	static String motds = "";
 	public static void LoadMOTD() {
-		File f = new File("./plugins/" + Globals.ConfigPath + "/random_motd.txt");
-    	Path p = Path.of("./plugins/" + Globals.ConfigPath + "/random_motd.txt");
+		File f = new File(Globals.ConfigPath + "/random_motd.txt");
+    	Path p = Path.of(Globals.ConfigPath + "/random_motd.txt");
     	if(!f.exists()){
     	    try {
 				f.createNewFile();

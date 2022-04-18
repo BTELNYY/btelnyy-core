@@ -15,13 +15,13 @@ import btelnyy.plugin.Main;
 public class CommandSuicide implements CommandExecutor {
 	public static String[] array = {};
 	public static void LoadMessages() {
-		File f = new File("./plugins/" + Globals.ConfigPath + "/death_msg.txt");
-    	Path p = Path.of("./plugins/" + Globals.ConfigPath + "/death_msg.txt");
+		File f = new File(Globals.ConfigPath + "/death_msg.txt");
+    	Path p = Path.of(Globals.ConfigPath + "/death_msg.txt");
     	String deaths = "";
     	if(!f.exists()){
     	    try {
 				f.createNewFile();
-				Main.log(java.util.logging.Level.WARNING, "./plugins/btelnyy/death_msg.txt does not exist.");
+				Main.log(java.util.logging.Level.WARNING, Globals.ConfigPath +"/death_msg.txt does not exist.");
 			} catch (IOException e) {
 				e.printStackTrace();
 			}

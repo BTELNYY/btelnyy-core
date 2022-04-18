@@ -6,11 +6,11 @@ commands:
    suicide:
       description: Kills you instantly.
       usage: /suicide
-      permission: btelnyy.suicide
+      permission: btelnyy.command.suicide
    dc:
       description: Kicks you from the server.
       usage: /dc
-      permission: btelnyy.dc
+      permission: btelnyy.command.dc
    vtp:
       description: Starts a vote to punish a player.
       usage: /vtp <player> <ban/kick>
@@ -22,7 +22,7 @@ commands:
    rules:
       description: Print server rules.
       usage: /rules
-      permission: btelnyy.rules
+      permission: btelnyy.command.rules
    voterestart:
       description: Start a vote to restart the server.
       usage: /voterestart
@@ -30,4 +30,20 @@ commands:
    ping:
       description: Get your ping to the server.
       usage: /ping
-      permission: btelnyy.ping
+      permission: btelnyy.command.ping
+   pvp:
+      description: Toggle global pvp
+      usage: /pvp
+      permission: btelnyy.command.pvp
+   hardcore:
+      description: Toggle hardcore mode (temporary)
+      usage: /hardcore
+      permission: btelnyy.command.hardcore
+   revive:
+      description: Revive a dead player (if they died to the plugins hardcore mode, only has effect if GHOST is the option)
+      usage: /revive <player>
+      permission: btelnyy.command.revive
+   reviveall:
+      description: Revive all dead players
+      usage: /reviveall
+      permission: btelnyy.command.reviveall
