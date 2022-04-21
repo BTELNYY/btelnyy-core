@@ -47,3 +47,7 @@ commands:
       description: Revive all dead players
       usage: /reviveall
       permission: btelnyy.command.reviveall
+   whereami:
+      description: Get your position
+      usage: /whereami
+      permission: btelnyy.command.whereami

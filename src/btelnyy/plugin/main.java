@@ -63,6 +63,7 @@ public class Main extends JavaPlugin {
     	this.getCommand("hardcore").setExecutor(new CommandHardcore());
     	this.getCommand("revive").setExecutor(new CommandRevive());
     	this.getCommand("reviveall").setExecutor(new CommandReviveAll());
+    	this.getCommand("whereamI").setExecutor(new CommandCoords());
     }
     public void LoadConfig() {
     	FileConfiguration config = instance.getConfig();

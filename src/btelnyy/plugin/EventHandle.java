@@ -5,6 +5,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDeathEvent;
+import org.bukkit.event.entity.ProjectileHitEvent;
 import org.bukkit.event.server.ServerListPingEvent;
 import btelnyy.plugin.MOTDHandler.*;
 public class EventHandle implements Listener{
@@ -34,6 +35,18 @@ public class EventHandle implements Listener{
 		if(Globals.DeadPlayers.contains(player)) {
 			event.setCancelled(true);
 			return;
+		}
+	}
+	@EventHandler
+	public void onProjetileHit(ProjectileHitEvent event) {
+		if(!(event.getEntity().getShooter() instanceof Player)) {
+			return;
+		}
+		if(!(event.getHitEntity() instanceof Player)) {
+			return;
+		}
+		if(!Globals.PvpToggled) {
+			event.setCancelled(true);
 		}
 	}
 	@EventHandler
