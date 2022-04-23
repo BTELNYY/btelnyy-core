@@ -12,6 +12,7 @@ import java.nio.file.LinkOption;
 import java.nio.file.Path;
 import java.util.Arrays;
 import java.util.logging.Level;
+
 public class Main extends JavaPlugin {
 	//meant for the server to know what to call when doing bukkit timers
 	private static Main instance;
@@ -46,6 +47,8 @@ public class Main extends JavaPlugin {
     	}
     	//event handle
     	getServer().getPluginManager().registerEvents(new EventHandle(), this);
+    	//load the rules
+    	CommandRules.LoadMessages();
     	//load MOTD on plugin enable
     	MOTDHandle.LoadMOTD();
     	//load suicide messages on enable
@@ -64,20 +67,30 @@ public class Main extends JavaPlugin {
     	this.getCommand("revive").setExecutor(new CommandRevive());
     	this.getCommand("reviveall").setExecutor(new CommandReviveAll());
     	this.getCommand("whereamI").setExecutor(new CommandCoords());
+    	this.getCommand("breload").setExecutor(new CommandReload());
     }
-    public void LoadConfig() {
+    
+    public static void LoadConfig() {
     	FileConfiguration config = instance.getConfig();
     	VoteGlobals.VoteTimer =  config.getInt("vote_timer");
+    	log(Level.INFO, "vote_timer: " + VoteGlobals.VoteTimer);
     	Globals.PvpToggled = config.getBoolean("default_pvp_toggle");
-    	String[] hoptions = {"SPECTATOR","GHOST"};
+    	log(Level.INFO, "default_pvp_toggle: " + Globals.PvpToggled);
     	Globals.HardcoreResult = config.getString("on_hardcore_death");
-    	if(!Arrays.asList(hoptions).contains(Globals.HardcoreResult)) {
+    	log(Level.INFO, "on_hardcore_death: (pre-check) " + Globals.HardcoreResult);
+    	if(!Arrays.asList(Globals.hoptions).contains(Globals.HardcoreResult)) {
     		Main.log(Level.WARNING, "Your configuration for hardcore result is incorrect, loaded default value.");
-    		Globals.HardcoreResult = hoptions[0];
+    		Globals.HardcoreResult = Globals.hoptions[0];
+    	}else {
+    		Globals.HardcoreResult = config.getString("on_hardcore_death");
     	}
+    	log(Level.INFO, "on_hardcore_death: " + Globals.HardcoreResult);
     	Globals.TpToDeathHardcore = config.getBoolean("tp_to_death_hardcore");
+    	log(Level.INFO, "tp_to_death_hardcore: " + Globals.TpToDeathHardcore);
     	Globals.ShowDeathTitle = config.getBoolean("show_death_title");
+    	log(Level.INFO, "show_death_title: " + Globals.ShowDeathTitle);
     }
+    
     // Fired when plugin is disabled
     @Override
     public void onDisable() {

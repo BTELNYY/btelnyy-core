@@ -51,3 +51,7 @@ commands:
       description: Get your position
       usage: /whereami
       permission: btelnyy.command.whereami
+   breload:
+      description: Reloads btelnyy-core's config
+      usage: /breload
+      permission: btelnyy.command.reloadcore

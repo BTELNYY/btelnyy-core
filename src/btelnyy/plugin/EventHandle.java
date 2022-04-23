@@ -1,10 +1,11 @@
 package btelnyy.plugin;
+import org.bukkit.Location;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
-import org.bukkit.event.entity.EntityDeathEvent;
+import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.entity.ProjectileHitEvent;
 import org.bukkit.event.server.ServerListPingEvent;
 import btelnyy.plugin.MOTDHandler.*;
@@ -50,15 +51,13 @@ public class EventHandle implements Listener{
 		}
 	}
 	@EventHandler
-	public void onEntityDeath(EntityDeathEvent event) {
+	public void onEntityDeath(PlayerDeathEvent event) {
 		//dont trigger unless the entity is a player and hardcore mode is on
-		if(event.getEntityType() != EntityType.PLAYER) {
-			return;
-		}
 		if(!Globals.HardcoreToggled) {
 			return;
 		}
-		Player p = (Player)event.getEntity();
-		RespawnHandler.RespawnPlayer(p, event);
+		Player p = event.getEntity();
+		Location deathlocation = event.getEntity().getLocation();
+		RespawnHandler.RespawnPlayer(p, event, deathlocation);
 	}
 }

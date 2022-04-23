@@ -3,7 +3,7 @@ package btelnyy.plugin;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
-import org.bukkit.event.entity.EntityDeathEvent;
+import org.bukkit.event.entity.PlayerDeathEvent;
 
 import java.util.logging.Level;
 
@@ -11,17 +11,17 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 
 public class RespawnHandler {
-	public static void RespawnPlayer(Player player, EntityDeathEvent event) {
-		if(Globals.HardcoreResult == "SPECTATOR") {
+	public static void RespawnPlayer(Player player, PlayerDeathEvent event, Location location) {
+		Main.log(Level.INFO, "About to respawn player. config: " + Globals.HardcoreResult);
+		if(Globals.HardcoreResult.equals(Globals.hoptions[0])) {
 			if(Globals.TpToDeathHardcore) {
-				Location location = event.getEntity().getLocation();
 				player.setGameMode(GameMode.SPECTATOR);
 				player.teleport(location);
 			}else{
 				player.setGameMode(GameMode.SPECTATOR);
 			}
-		}else {
-			GhostPlayer(player, event);
+		}else if(Globals.HardcoreResult.equals(Globals.hoptions[1])){
+			GhostPlayer(player, event, location);
 		}
 		if(Globals.ShowDeathTitle) {
 			player.sendTitle(ChatColor.RED + "YOU DIED!", "You cannot respawn in hardcore mode.", 20, 100, 20);
@@ -29,9 +29,8 @@ public class RespawnHandler {
 		Globals.DeadPlayers.add(player);
 		player.spigot().respawn();
 	}
-	public static void GhostPlayer(Player player, EntityDeathEvent event) {
+	public static void GhostPlayer(Player player, PlayerDeathEvent event, Location location) {
 		if(Globals.TpToDeathHardcore) {
-			Location location = event.getEntity().getLocation();
 			player.setGameMode(GameMode.ADVENTURE);
 			player.setAllowFlight(true);
 			player.setInvisible(true);
