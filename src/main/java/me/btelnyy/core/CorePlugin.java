@@ -61,6 +61,8 @@ public class CorePlugin extends JavaPlugin {
         registerCommandExecutor("reviveall",   new CommandReviveAll());
         registerCommandExecutor("whereamI",    new CommandCoords());
         registerCommandExecutor("breload",     new CommandReload(configLoaderService, rulesMessageService, motdMessageService, suicideMessageService));
+
+        getLogger().log(Level.INFO, "Check out the project on GitHub!: https://github.com/BTELNYY/btelnyy-core");
     }
 
     private void registerCommandExecutor(String commandName, CommandExecutor commandExecutor) {
