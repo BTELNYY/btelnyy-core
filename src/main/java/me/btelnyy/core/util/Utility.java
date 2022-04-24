@@ -1,10 +1,9 @@
-package btelnyy.plugin;
+package me.btelnyy.core.util;
 
 import org.bukkit.entity.Player;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
-
 
 public class Utility {
 	   public static int ArrayCounter(Object[] o)   

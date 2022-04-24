@@ -1,5 +1,7 @@
-package btelnyy.plugin;
+package me.btelnyy.core.util;
 
+import me.btelnyy.core.constant.Globals;
+import me.btelnyy.core.Main;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;

@@ -1,13 +1,14 @@
-package btelnyy.plugin.Commands;
+package me.btelnyy.core.command;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 
-import btelnyy.plugin.Globals;
-import btelnyy.plugin.Utility;
+import me.btelnyy.core.constant.Globals;
+import me.btelnyy.core.util.Utility;
 
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandExecutor;
+
 public class CommandPvp implements CommandExecutor {
 	public boolean onCommand(CommandSender sender, Command command, String arg2, String[] args) {
 		Globals.PvpToggled = !Globals.PvpToggled;

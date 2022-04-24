@@ -1,4 +1,5 @@
-package btelnyy.plugin.MOTDHandler;
+package me.btelnyy.core.util;
+
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -6,8 +7,8 @@ import java.nio.file.Path;
 import java.util.Random;
 import org.bukkit.event.server.ServerListPingEvent;
 
-import btelnyy.plugin.Globals;
-import btelnyy.plugin.Main;
+import me.btelnyy.core.constant.Globals;
+import me.btelnyy.core.Main;
 
 public class MOTDHandle {
 	static String motds = "";

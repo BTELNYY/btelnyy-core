@@ -1,13 +1,14 @@
-package btelnyy.plugin.Commands;
+package me.btelnyy.core.command;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 
-import btelnyy.plugin.Main;
-import btelnyy.plugin.MOTDHandler.MOTDHandle;
+import me.btelnyy.core.Main;
+import me.btelnyy.core.util.MOTDHandle;
 
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandExecutor;
+
 public class CommandReload implements CommandExecutor {
 	public boolean onCommand(CommandSender sender, Command command, String arg2, String[] args) {
 		sender.sendMessage(ChatColor.GRAY + "Reloading plugin configuration and text files.");

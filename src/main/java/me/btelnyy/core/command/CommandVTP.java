@@ -1,7 +1,9 @@
-package btelnyy.plugin.VotingSystem;
+package me.btelnyy.core.command;
 
 import java.util.logging.Level;
 
+import me.btelnyy.core.vote.PunishPlayer;
+import me.btelnyy.core.constant.VoteGlobals;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -9,7 +11,8 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import btelnyy.plugin.Main;
+import me.btelnyy.core.Main;
+
 public class CommandVTP implements CommandExecutor {
 
 	@Override

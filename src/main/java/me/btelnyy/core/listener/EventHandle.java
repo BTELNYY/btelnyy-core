@@ -1,4 +1,8 @@
-package btelnyy.plugin;
+package me.btelnyy.core.listener;
+
+import me.btelnyy.core.constant.Globals;
+import me.btelnyy.core.util.RespawnHandler;
+import me.btelnyy.core.util.MOTDHandle;
 import org.bukkit.Location;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
@@ -8,7 +12,7 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.entity.ProjectileHitEvent;
 import org.bukkit.event.server.ServerListPingEvent;
-import btelnyy.plugin.MOTDHandler.*;
+
 public class EventHandle implements Listener{
 	@EventHandler
 	public void onPing(ServerListPingEvent event) {

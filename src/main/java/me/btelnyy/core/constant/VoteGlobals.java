@@ -1,7 +1,9 @@
-package btelnyy.plugin.VotingSystem;
+package me.btelnyy.core.constant;
+
 import java.util.ArrayList;
 import java.util.List;
 import org.bukkit.entity.Player;
+
 public class VoteGlobals {
 	public static Player target = null;
 	public static int VoteYes = 0;

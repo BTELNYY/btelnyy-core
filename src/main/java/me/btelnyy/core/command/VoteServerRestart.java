@@ -1,11 +1,14 @@
-package btelnyy.plugin.VotingSystem;
+package me.btelnyy.core.command;
 
+import me.btelnyy.core.vote.RestartServer;
+import me.btelnyy.core.constant.VoteGlobals;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.entity.Player;
+
 public class VoteServerRestart implements CommandExecutor {
 	public boolean onCommand(CommandSender sender, Command command, String arg2, String[] args) {
 		if(VoteGlobals.VoteExists) {

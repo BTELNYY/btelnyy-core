@@ -1,10 +1,15 @@
-package btelnyy.plugin;
+package me.btelnyy.core;
+
+import me.btelnyy.core.command.*;
+import me.btelnyy.core.constant.Globals;
+import me.btelnyy.core.listener.EventHandle;
+import me.btelnyy.core.util.MOTDHandle;
+import me.btelnyy.core.command.CommandVTP;
+import me.btelnyy.core.command.Vote;
+import me.btelnyy.core.constant.VoteGlobals;
+import me.btelnyy.core.command.VoteServerRestart;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
-
-import btelnyy.plugin.MOTDHandler.*;
-import btelnyy.plugin.Commands.*;
-import btelnyy.plugin.VotingSystem.*;
 
 import java.io.File;
 import java.nio.file.Files;

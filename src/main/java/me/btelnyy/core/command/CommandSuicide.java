@@ -1,4 +1,5 @@
-package btelnyy.plugin.Commands;
+package me.btelnyy.core.command;
+
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -10,8 +11,9 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import btelnyy.plugin.Globals;
-import btelnyy.plugin.Main;
+import me.btelnyy.core.constant.Globals;
+import me.btelnyy.core.Main;
+
 public class CommandSuicide implements CommandExecutor {
 	public static String[] array = {};
 	public static void LoadMessages() {

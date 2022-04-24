@@ -1,8 +1,9 @@
-package btelnyy.plugin;
+package me.btelnyy.core.constant;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import me.btelnyy.core.Main;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 

@@ -1,4 +1,4 @@
-package btelnyy.plugin.Commands;
+package me.btelnyy.core.command;
 
 import java.io.File;
 import java.io.IOException;
@@ -10,8 +10,8 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
-import btelnyy.plugin.Globals;
-import btelnyy.plugin.Main;
+import me.btelnyy.core.constant.Globals;
+import me.btelnyy.core.Main;
 
 public class CommandRules implements CommandExecutor{
 	private static String rules = "";
