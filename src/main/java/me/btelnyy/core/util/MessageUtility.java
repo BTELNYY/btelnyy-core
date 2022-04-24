@@ -1,4 +1,4 @@
-package main.java.me.btelnyy.core.util;
+package me.btelnyy.core.util;
 
 import org.bukkit.entity.Player;
 import org.bukkit.Bukkit;
