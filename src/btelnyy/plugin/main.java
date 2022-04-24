@@ -7,6 +7,7 @@ import btelnyy.plugin.Commands.*;
 import btelnyy.plugin.VotingSystem.*;
 
 import java.io.File;
+import java.lang.System.Logger;
 import java.nio.file.Files;
 import java.nio.file.LinkOption;
 import java.nio.file.Path;
@@ -68,6 +69,7 @@ public class Main extends JavaPlugin {
     	this.getCommand("reviveall").setExecutor(new CommandReviveAll());
     	this.getCommand("whereamI").setExecutor(new CommandCoords());
     	this.getCommand("breload").setExecutor(new CommandReload());
+    	log(Level.INFO, "Check out the project on GitHub!: https://github.com/BTELNYY/btelnyy-core");
     }
     
     public static void LoadConfig() {
