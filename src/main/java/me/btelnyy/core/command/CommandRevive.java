@@ -1,0 +1,38 @@
+package main.java.me.btelnyy.core.command;
+
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandSender;
+
+
+
+import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
+import org.bukkit.command.CommandExecutor;
+import org.bukkit.entity.Player;
+
+import main.java.me.btelnyy.core.constant.Globals;
+import main.java.me.btelnyy.core.util.MessageUtility;
+import main.java.me.btelnyy.core.util.RespawnUtil;
+
+public class CommandRevive implements CommandExecutor {
+
+    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+        if (args.length < 1) {
+            sender.sendMessage(ChatColor.RED + "Error: Invalid syntax. Usage: /revive <player>");
+            return true;
+        }
+        if (Bukkit.getPlayer(args[0]) == null) {
+            sender.sendMessage(ChatColor.RED + "Error: Player not found.");
+            return true;
+        }
+        Player revivalTarget = Bukkit.getPlayer(args[0]);
+        if (!Globals.deadPlayers.contains(revivalTarget)) {
+            sender.sendMessage(ChatColor.RED + "Error: Player is not dead.");
+            return true;
+        }
+        RespawnUtil.revivePlayer(revivalTarget);
+        sender.sendMessage(ChatColor.GRAY + "Player " + revivalTarget.getName() + " has been revived.");
+        MessageUtility.messageOperators("Has revived " + revivalTarget.getName(), sender);
+        return true;
+    }
+}
