@@ -35,6 +35,7 @@ bin/
 # Ignore chad IDE files
 .idea/
 *.iml
+*.code-workspace
 
 # Ignore chad Maven files
 target/

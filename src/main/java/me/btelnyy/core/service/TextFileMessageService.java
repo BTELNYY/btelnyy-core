@@ -1,8 +1,4 @@
 package me.btelnyy.core.service;
-
-import me.btelnyy.core.command.CommandRules;
-import org.bukkit.plugin.java.JavaPlugin;
-
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -15,7 +11,6 @@ import java.util.logging.Logger;
 public final class TextFileMessageService {
 
     private static final Random RANDOM = new SecureRandom();
-
     private final File   file;
     private final Logger logger;
 
