@@ -11,37 +11,41 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
 import me.btelnyy.core.constant.Globals;
-import me.btelnyy.core.Main;
+import me.btelnyy.core.CorePlugin;
+import org.bukkit.plugin.java.JavaPlugin;
 
-public class CommandRules implements CommandExecutor{
-	private static String rules = "";
-	public boolean onCommand(CommandSender sender, Command command, String arg2, String[] args) {
+public class CommandRules implements CommandExecutor {
 
-    	String[] rulelines = rules.split("\\r?\\n");
-    	for(String rule : rulelines){
-    		sender.sendMessage(rule);
-    	}
-    	return true;
-	}
-	public static void LoadMessages() {
-    	File f = new File(Globals.ConfigPath + "/rules.txt");
-    	Path p = Path.of(Globals.ConfigPath + "/rules.txt");
-    	if(!f.exists()){
-    	    try {
-				f.createNewFile();
-				Main.log(Level.WARNING, "No rules.txt exists.");
-				return;
-			} catch (IOException e) {
-				e.printStackTrace();
-				return;
-			}
-    	}else {
-    		try {
-				rules = Files.readString(p);
-			} catch (IOException e) {
-				e.printStackTrace();
-				return;
-			}
-    	}
-	}
+    private static String rules = "";
+
+    public boolean onCommand(CommandSender sender, Command command, String arg2, String[] args) {
+
+        String[] rulelines = rules.split("\\r?\\n");
+        for (String rule : rulelines) {
+            sender.sendMessage(rule);
+        }
+        return true;
+    }
+
+    public static void LoadMessages() {
+        File f = new File(JavaPlugin.getProvidingPlugin(CommandRules.class).getDataFolder(), "rules.txt");
+        Path p = f.toPath();
+        if (!f.exists()) {
+            try {
+                f.createNewFile();
+                JavaPlugin.getProvidingPlugin(CommandRules.class).getLogger().log(Level.WARNING, "No rules.txt exists.");
+                return;
+            } catch (IOException e) {
+                e.printStackTrace();
+                return;
+            }
+        } else {
+            try {
+                rules = Files.readString(p);
+            } catch (IOException e) {
+                e.printStackTrace();
+                return;
+            }
+        }
+    }
 }

@@ -1,5 +1,5 @@
 name: btelnyy-core
-main: me.btelnyy.core.Main
+main: me.btelnyy.core.CorePlugin
 version: ${project.version}
 api-version: 1.18
 commands:
