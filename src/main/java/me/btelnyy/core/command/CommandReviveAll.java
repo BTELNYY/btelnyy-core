@@ -1,12 +1,12 @@
-package main.java.me.btelnyy.core.command;
-
-import main.java.me.btelnyy.core.util.MessageUtility;
-import main.java.me.btelnyy.core.util.RespawnUtil;
+package me.btelnyy.core.command;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.entity.Player;
+
+import me.btelnyy.core.util.RespawnUtil;
+import me.btelnyy.core.util.MessageUtility;
 
 public class CommandReviveAll implements CommandExecutor {
 

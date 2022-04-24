@@ -1,10 +1,8 @@
-package main.java.me.btelnyy.core.listener;
+package me.btelnyy.core.listener;
 
-
-import main.java.me.btelnyy.core.constant.Globals;
-import main.java.me.btelnyy.core.service.TextFileMessageService;
-import main.java.me.btelnyy.core.util.RespawnUtil;
-
+import me.btelnyy.core.constant.Globals;
+import me.btelnyy.core.service.TextFileMessageService;
+import me.btelnyy.core.util.RespawnUtil;
 import org.bukkit.Location;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;

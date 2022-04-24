@@ -1,8 +1,8 @@
-package main.java.me.btelnyy.core.task;
+package me.btelnyy.core.task;
 
 import java.util.logging.Level;
 
-import main.java.me.btelnyy.core.constant.VoteGlobals;
+import me.btelnyy.core.constant.VoteGlobals;
 import org.bukkit.BanList;
 import org.bukkit.BanList.Type;
 import org.bukkit.Bukkit;

@@ -1,4 +1,4 @@
-package main.java.me.btelnyy.core.constant;
+package me.btelnyy.core.constant;
 
 import java.util.ArrayList;
 import java.util.List;

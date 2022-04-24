@@ -1,4 +1,4 @@
-package main.java.me.btelnyy.core.command;
+package me.btelnyy.core.command;
 
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;

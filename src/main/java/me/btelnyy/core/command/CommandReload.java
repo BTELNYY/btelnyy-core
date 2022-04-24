@@ -1,11 +1,9 @@
-package main.java.me.btelnyy.core.command;
+package me.btelnyy.core.command;
 
-
+import me.btelnyy.core.service.ConfigLoaderService;
+import me.btelnyy.core.service.TextFileMessageService;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
-
-import main.java.me.btelnyy.core.service.ConfigLoaderService;
-import main.java.me.btelnyy.core.service.TextFileMessageService;
 
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandExecutor;

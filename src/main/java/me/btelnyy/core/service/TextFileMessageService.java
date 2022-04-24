@@ -1,4 +1,7 @@
-package main.java.me.btelnyy.core.service;
+package me.btelnyy.core.service;
+
+import me.btelnyy.core.command.CommandRules;
+import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
 import java.io.IOException;

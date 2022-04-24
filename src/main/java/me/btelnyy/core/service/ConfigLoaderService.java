@@ -1,10 +1,9 @@
-package main.java.me.btelnyy.core.service;
+package me.btelnyy.core.service;
 
-
+import me.btelnyy.core.constant.Globals;
+import me.btelnyy.core.constant.VoteGlobals;
 import org.bukkit.configuration.file.FileConfiguration;
 
-import main.java.me.btelnyy.core.constant.Globals;
-import main.java.me.btelnyy.core.constant.VoteGlobals;
 import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;

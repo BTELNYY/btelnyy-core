@@ -1,18 +1,15 @@
-package main.java.me.btelnyy.core.command;
+package me.btelnyy.core.command;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
-
-
-
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.entity.Player;
 
-import main.java.me.btelnyy.core.constant.Globals;
-import main.java.me.btelnyy.core.util.MessageUtility;
-import main.java.me.btelnyy.core.util.RespawnUtil;
+import me.btelnyy.core.constant.Globals;
+import me.btelnyy.core.util.RespawnUtil;
+import me.btelnyy.core.util.MessageUtility;
 
 public class CommandRevive implements CommandExecutor {
 

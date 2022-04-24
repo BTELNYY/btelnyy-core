@@ -1,6 +1,6 @@
-package main.java.me.btelnyy.core.util;
+package me.btelnyy.core.util;
 
-import main.java.me.btelnyy.core.constant.Globals;
+import me.btelnyy.core.constant.Globals;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;

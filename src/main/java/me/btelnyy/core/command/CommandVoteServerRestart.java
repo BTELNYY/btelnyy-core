@@ -1,12 +1,9 @@
-package main.java.me.btelnyy.core.command;
+package me.btelnyy.core.command;
 
-
+import me.btelnyy.core.task.RestartServerRunnable;
+import me.btelnyy.core.constant.VoteGlobals;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
-
-import main.java.me.btelnyy.core.constant.VoteGlobals;
-import main.java.me.btelnyy.core.task.RestartServerRunnable;
-
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandExecutor;

@@ -1,10 +1,10 @@
-package main.java.me.btelnyy.core.command;
+package me.btelnyy.core.command;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 
-import main.java.me.btelnyy.core.constant.Globals;
-import main.java.me.btelnyy.core.util.MessageUtility;
+import me.btelnyy.core.constant.Globals;
+import me.btelnyy.core.util.MessageUtility;
 
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandExecutor;

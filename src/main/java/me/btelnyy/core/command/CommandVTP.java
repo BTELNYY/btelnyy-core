@@ -1,9 +1,9 @@
-package main.java.me.btelnyy.core.command;
+package me.btelnyy.core.command;
 
-import main.java.me.btelnyy.core.constant.VoteGlobals;
 import java.util.logging.Level;
 
-import main.java.me.btelnyy.core.task.*;
+import me.btelnyy.core.task.PunishPlayerRunnable;
+import me.btelnyy.core.constant.VoteGlobals;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;

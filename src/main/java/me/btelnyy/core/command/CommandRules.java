@@ -1,7 +1,6 @@
-package main.java.me.btelnyy.core.command;
+package me.btelnyy.core.command;
 
-import main.java.me.btelnyy.core.service.TextFileMessageService;
-
+import me.btelnyy.core.service.TextFileMessageService;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;

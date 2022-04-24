@@ -1,12 +1,11 @@
-package main.java.me.btelnyy.core.command;
+package me.btelnyy.core.command;
 
-
+import me.btelnyy.core.constant.VoteGlobals;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import main.java.me.btelnyy.core.constant.VoteGlobals;
 import java.util.logging.Level;
 
 import org.bukkit.Bukkit;

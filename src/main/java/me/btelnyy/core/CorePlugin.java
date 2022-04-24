@@ -1,16 +1,17 @@
-package main.java.me.btelnyy.core;
+package me.btelnyy.core;
 
-
-
+import me.btelnyy.core.command.*;
+import me.btelnyy.core.listener.EventListener;
+import me.btelnyy.core.service.ConfigLoaderService;
+import me.btelnyy.core.service.TextFileMessageService;
+import me.btelnyy.core.command.CommandVTP;
+import me.btelnyy.core.command.CommandVote;
+import me.btelnyy.core.command.CommandVoteServerRestart;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.PluginCommand;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
-import main.java.me.btelnyy.core.command.*;
-import main.java.me.btelnyy.core.listener.EventListener;
-import main.java.me.btelnyy.core.service.ConfigLoaderService;
-import main.java.me.btelnyy.core.service.TextFileMessageService;
 import java.util.logging.Level;
 
 public class CorePlugin extends JavaPlugin {
@@ -60,6 +61,8 @@ public class CorePlugin extends JavaPlugin {
         registerCommandExecutor("reviveall",   new CommandReviveAll());
         registerCommandExecutor("whereamI",    new CommandCoords());
         registerCommandExecutor("breload",     new CommandReload(configLoaderService, rulesMessageService, motdMessageService, suicideMessageService));
+
+        getLogger().log(Level.INFO, "Check out the project on GitHub!: https://github.com/BTELNYY/btelnyy-core");
     }
 
     private void registerCommandExecutor(String commandName, CommandExecutor commandExecutor) {
