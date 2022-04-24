@@ -25,6 +25,7 @@ hs_err_pid*
 # Ignore anti-build-system files
 out/
 build/
+bin/
 
 # Ignore gay IDE files
 .settings/
