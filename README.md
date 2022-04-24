@@ -1,4 +1,4 @@
-# BTELNYY-Server-Utils
+# btelnyy-core
  A minecraft Plugin.
 This plugin is most useful for semi-vanilla minecraft survival servers who want to have as little plugins as possible
 This plugin tries to fit in with the classic minecraft look with errors being red and info being gray.
