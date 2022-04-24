@@ -1,8 +1,8 @@
 package me.btelnyy.core.listener;
 
 import me.btelnyy.core.constant.Globals;
+import me.btelnyy.core.service.TextFileMessageService;
 import me.btelnyy.core.util.RespawnUtil;
-import me.btelnyy.core.util.MOTDUtil;
 import org.bukkit.Location;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
@@ -15,10 +15,16 @@ import org.bukkit.event.server.ServerListPingEvent;
 
 public class EventListener implements Listener {
 
+    private final TextFileMessageService motdMessageService;
+
+    public EventListener(TextFileMessageService motdMessageService) {
+        this.motdMessageService = motdMessageService;
+    }
+
     @EventHandler
     public void onPing(ServerListPingEvent event) {
         //handles event and fires at the method
-        event.setMotd(MOTDUtil.getRandomMOTD());
+        event.setMotd(motdMessageService.getRandomMessage());
     }
 
     @EventHandler

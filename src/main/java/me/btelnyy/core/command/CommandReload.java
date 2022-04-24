@@ -1,22 +1,28 @@
 package me.btelnyy.core.command;
 
+import me.btelnyy.core.service.ConfigLoaderService;
+import me.btelnyy.core.service.TextFileMessageService;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
-
-import me.btelnyy.core.CorePlugin;
-import me.btelnyy.core.util.MOTDUtil;
 
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandExecutor;
 
 public class CommandReload implements CommandExecutor {
 
+    private final ConfigLoaderService      configLoaderService;
+    private final TextFileMessageService[] messageServices;
+
+    public CommandReload(ConfigLoaderService configLoaderService, TextFileMessageService... messageServices) {
+        this.configLoaderService = configLoaderService;
+        this.messageServices     = messageServices;
+    }
+
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         sender.sendMessage(ChatColor.GRAY + "Reloading plugin configuration and text files.");
-        MOTDUtil.loadMOTD();
-        CommandRules.loadMessages();
-        CommandSuicide.loadMessages();
-        CorePlugin.loadConfig();
+        for (TextFileMessageService messageService : messageServices)
+            messageService.loadMessages();
+        configLoaderService.loadConfig();
         sender.sendMessage(ChatColor.GRAY + "Done.");
         return true;
     }
