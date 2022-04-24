@@ -13,14 +13,8 @@ public class CommandPvp implements CommandExecutor {
 
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         Globals.pvpToggled = !Globals.pvpToggled;
-        if (Globals.pvpToggled) {
-            sender.sendMessage(ChatColor.GRAY + "PVP is now enabled.");
-            MessageUtility.messageOperators("Enabled PVP", sender);
-            return true;
-        } else {
-            sender.sendMessage(ChatColor.GRAY + "PVP is now disabled.");
-            MessageUtility.messageOperators("Disabled PVP", sender);
-            return true;
-        }
+        sender.sendMessage(String.format("%sPVP is now %s.", ChatColor.GRAY, Globals.hardcoreToggled ? "enabled" : "disabled"));
+        MessageUtility.messageOperators(String.format("%s PVP", Globals.hardcoreToggled ? "Enabled" : "Disabled"), sender);
+        return true;
     }
 }

@@ -17,13 +17,13 @@ public class CommandSuicide implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (sender instanceof Player) {
-            ((Player) sender).setHealth(0);
-            sender.sendMessage(ChatColor.RED + messageService.getRandomMessage());
+        if (!(sender instanceof Player)) {
+            sender.sendMessage(ChatColor.RED + "Error: You must be a player to run this command.");
             return true;
         }
-        sender.sendMessage(ChatColor.RED + "Error: You must be a player to run this command.");
+
+        ((Player) sender).setHealth(0);
+        sender.sendMessage(ChatColor.RED + messageService.getRandomMessage());
         return true;
     }
-
 }

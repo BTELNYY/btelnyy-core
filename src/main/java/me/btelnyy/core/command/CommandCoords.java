@@ -16,36 +16,29 @@ public class CommandCoords implements CommandExecutor {
             sender.sendMessage(ChatColor.RED + "Error: You must be a player to run this command.");
             return true;
         }
-        if (args.length > 0) {
-            if (!sender.hasPermission("btelnyy.command.whereami.others")) {
-                Player player = (Player) sender;
-                Location pos = player.getEyeLocation();
-                int x = pos.getBlockX();
-                int y = pos.getBlockY();
-                int z = pos.getBlockZ();
-                sender.sendMessage(ChatColor.GRAY + "Your position: (XYZ) " + x + " " + y + " " + z);
-                return true;
-            }
-            if (Bukkit.getPlayer(args[0]) == null) {
+
+        // Select the player
+        Player targetPlayer;
+        if (args.length == 0 || !sender.hasPermission("btelnyy.command.whereami.others"))
+            targetPlayer = (Player) sender;
+        else {
+            targetPlayer = Bukkit.getPlayer(args[0]);
+            if(targetPlayer == null) {
                 sender.sendMessage(ChatColor.RED + "Error: Player not found.");
                 return true;
-            } else {
-                Player targetPlayer = Bukkit.getPlayer(args[0]);
-                Location pos = targetPlayer.getEyeLocation();
-                int x = pos.getBlockX();
-                int y = pos.getBlockY();
-                int z = pos.getBlockZ();
-                sender.sendMessage(ChatColor.GRAY + targetPlayer.getName() + "'s position: (XYZ) " + x + " " + y + " " + z);
             }
-        } else {
-            Player player = (Player) sender;
-            Location pos = player.getEyeLocation();
-            int x = pos.getBlockX();
-            int y = pos.getBlockY();
-            int z = pos.getBlockZ();
-            sender.sendMessage(ChatColor.GRAY + "Your position: (XYZ) " + x + " " + y + " " + z);
-            return true;
         }
+
+        Location pos = targetPlayer.getEyeLocation();
+        sender.sendMessage(
+                String.format(
+                        "%s%s position: (XYZ) %d %d %d",
+                        ChatColor.GRAY,
+                        targetPlayer == sender ? "Your" : targetPlayer.getName() + "'s",
+                        pos.getBlockX(),
+                        pos.getBlockY(),
+                        pos.getBlockZ()));
+
         return true;
     }
 }

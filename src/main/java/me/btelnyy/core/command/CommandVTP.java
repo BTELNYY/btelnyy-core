@@ -30,13 +30,13 @@ public class CommandVTP implements CommandExecutor {
         if (player == null) {
             sender.sendMessage(ChatColor.RED + "Error: Player not found.");
             return true;
-        } else {
-            if (player.isOp()) {
-                sender.sendMessage(ChatColor.RED + "Error: You cannot vote to punish administrators.");
-                return true;
-            }
-            VoteGlobals.target = player;
+        } else if (player.isOp()) {
+            sender.sendMessage(ChatColor.RED + "Error: You cannot vote to punish administrators.");
+            return true;
         }
+
+        VoteGlobals.target = player;
+
         switch (args[1]) {
             case "ban":
                 if (!sender.hasPermission("btelnyy.vote.ban")) {

@@ -16,29 +16,33 @@ public class CommandVote implements CommandExecutor {
 
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         Player s = (Player) sender;
+
         // not used
         boolean override = false;
+
         if (args.length < 1) {
             sender.sendMessage(ChatColor.RED + "Error: Invalid syntax.");
             return false;
         }
-        String VoteOption = args[0];
+
+        String voteOption = args[0];
         if (!VoteGlobals.voteExists) {
             sender.sendMessage(ChatColor.RED + "Error: No vote is active.");
             return true;
         }
-        switch (VoteOption) {
+
+        switch (voteOption) {
             case "yes":
                 if (override) {
                     VoteGlobals.yesCount += 999;
                     Bukkit.broadcastMessage(ChatColor.YELLOW + "The vote was overriden by " + sender.getName());
                 }
-                for (Player p : VoteGlobals.playersWhoHaveVoted) {
-                    if (p == s) {
-                        sender.sendMessage(ChatColor.RED + "Error: You have voted already.");
-                        return true;
-                    }
+
+                if (VoteGlobals.playersWhoHaveVoted.contains(s)) {
+                    sender.sendMessage(ChatColor.RED + "Error: You have voted already.");
+                    return true;
                 }
+
                 VoteGlobals.yesCount += 1;
                 sender.sendMessage(ChatColor.GRAY + "Vote successful.");
                 VoteGlobals.playersWhoHaveVoted.add(s);
@@ -49,12 +53,12 @@ public class CommandVote implements CommandExecutor {
                     VoteGlobals.noCount += 999;
                     Bukkit.broadcastMessage(ChatColor.YELLOW + "The vote was overriden by " + sender.getName());
                 }
-                for (Player p : VoteGlobals.playersWhoHaveVoted) {
-                    if (p == s) {
-                        sender.sendMessage(ChatColor.RED + "Error: You have voted already.");
-                        return true;
-                    }
+
+                if (VoteGlobals.playersWhoHaveVoted.contains(s)) {
+                    sender.sendMessage(ChatColor.RED + "Error: You have voted already.");
+                    return true;
                 }
+
                 VoteGlobals.noCount += 1;
                 sender.sendMessage(ChatColor.GRAY + "Vote successful.");
                 VoteGlobals.playersWhoHaveVoted.add(s);

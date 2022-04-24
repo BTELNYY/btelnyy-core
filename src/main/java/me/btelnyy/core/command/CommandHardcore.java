@@ -12,18 +12,9 @@ public class CommandHardcore implements CommandExecutor {
 
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         //if you disable hardcore via command, but server hardcore is still on
-        if (!Globals.hardcoreToggled) {
-            sender.sendMessage(ChatColor.GRAY + "Hardcore is now enabled.");
-            MessageUtility.messageOperators("Enabled Hardcore", sender);
-            Globals.hardcoreToggled = true;
-            return true;
-        }
-        if (Globals.hardcoreToggled) {
-            sender.sendMessage(ChatColor.GRAY + "Hardcore is now disabled.");
-            MessageUtility.messageOperators("Disabled Hardcore", sender);
-            Globals.hardcoreToggled = false;
-            return true;
-        }
+        Globals.hardcoreToggled = !Globals.hardcoreToggled;
+        sender.sendMessage(String.format("%sHardcore is now %s.", ChatColor.GRAY, Globals.hardcoreToggled ? "enabled" : "disabled"));
+        MessageUtility.messageOperators(String.format("%s Hardcore", Globals.hardcoreToggled ? "Enabled" : "Disabled"), sender);
         return true;
     }
 }
