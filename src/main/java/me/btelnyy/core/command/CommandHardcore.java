@@ -10,18 +10,18 @@ import me.btelnyy.core.util.MessageUtility;
 
 public class CommandHardcore implements CommandExecutor {
 
-    public boolean onCommand(CommandSender sender, Command command, String arg2, String[] args) {
+    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         //if you disable hardcore via command, but server hardcore is still on
-        if (!Globals.HardcoreToggled) {
+        if (!Globals.hardcoreToggled) {
             sender.sendMessage(ChatColor.GRAY + "Hardcore is now enabled.");
-            MessageUtility.SendToOps("Enabled Hardcore", sender);
-            Globals.HardcoreToggled = true;
+            MessageUtility.messageOperators("Enabled Hardcore", sender);
+            Globals.hardcoreToggled = true;
             return true;
         }
-        if (Globals.HardcoreToggled) {
+        if (Globals.hardcoreToggled) {
             sender.sendMessage(ChatColor.GRAY + "Hardcore is now disabled.");
-            MessageUtility.SendToOps("Disabled Hardcore", sender);
-            Globals.HardcoreToggled = false;
+            MessageUtility.messageOperators("Disabled Hardcore", sender);
+            Globals.hardcoreToggled = false;
             return true;
         }
         return true;

@@ -15,7 +15,7 @@ public class MOTDUtil {
 
     static String motds = "";
 
-    public static void LoadMOTD() {
+    public static void loadMOTD() {
         File f = new File(JavaPlugin.getProvidingPlugin(CommandRules.class).getDataFolder(), "random_motd.txt");
         Path p = f.toPath();
         if (!f.exists()) {
@@ -36,14 +36,10 @@ public class MOTDUtil {
         }
     }
 
-    static String getRandomMOTD() {
+    public static String getRandomMOTD() {
         String[] array = motds.split("\\r?\\n");
         Random rand = new Random();
         int random = rand.nextInt(array.length) + 0;
         return array[random];
-    }
-
-    public static void ChangeMOTD(ServerListPingEvent event) {
-        event.setMotd(getRandomMOTD());
     }
 }

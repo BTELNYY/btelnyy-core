@@ -7,7 +7,7 @@ import org.bukkit.command.CommandSender;
 
 public class MessageUtility {
 
-    public static void SendToOps(String message, CommandSender sender) {
+    public static void messageOperators(String message, CommandSender sender) {
         String name;
         //if it is the server, change the name to avoid an error
         if (!(sender instanceof Player)) {
@@ -16,12 +16,8 @@ public class MessageUtility {
             name = sender.getName();
         }
         for (Player p : Bukkit.getServer().getOnlinePlayers()) {
-            if (p.isOp()) {
-                if (name != "Server") {
-                    if (p != (Player) sender) {
-                        p.sendMessage(ChatColor.GRAY + "" + ChatColor.ITALIC + "[" + name + ": " + message + "]");
-                    }
-                }
+            if (p.isOp() && p != sender) {
+                p.sendMessage(ChatColor.GRAY + "" + ChatColor.ITALIC + "[" + name + ": " + message + "]");
             }
         }
     }

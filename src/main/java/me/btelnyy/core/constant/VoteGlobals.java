@@ -8,11 +8,11 @@ import org.bukkit.entity.Player;
 public class VoteGlobals {
 
     public static Player target = null;
-    public static int VoteYes = 0;
-    public static int VoteNo = 0;
-    public static List<Player> VotedPlayers = new ArrayList<>();
-    public static boolean VoteExists = false;
-    public static String VoteType = "";
-    public static int VoteTimer = 30;
+    public static int yesCount = 0;
+    public static int noCount = 0;
+    public static List<Player> playersWhoHaveVoted = new ArrayList<>();
+    public static boolean voteExists = false;
+    public static String voteType = "";
+    public static int voteTimer = 30;
     public static Player starter = null;
 }

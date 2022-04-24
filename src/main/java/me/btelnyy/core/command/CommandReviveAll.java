@@ -10,9 +10,9 @@ import me.btelnyy.core.util.MessageUtility;
 
 public class CommandReviveAll implements CommandExecutor {
 
-    public boolean onCommand(CommandSender sender, Command command, String arg2, String[] args) {
-        RespawnUtil.ReviveAll((Player) sender);
-        MessageUtility.SendToOps("Revived all players", sender);
+    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+        RespawnUtil.reviveAll((Player) sender);
+        MessageUtility.messageOperators("Revived all players", sender);
         return true;
     }
 }

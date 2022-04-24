@@ -14,51 +14,51 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class CommandVote implements CommandExecutor {
 
-    public boolean onCommand(CommandSender sender, Command command, String arg2, String[] args) {
+    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         Player s = (Player) sender;
-        //not used
+        // not used
         boolean override = false;
         if (args.length < 1) {
             sender.sendMessage(ChatColor.RED + "Error: Invalid syntax.");
             return false;
         }
         String VoteOption = args[0];
-        if (!VoteGlobals.VoteExists) {
+        if (!VoteGlobals.voteExists) {
             sender.sendMessage(ChatColor.RED + "Error: No vote is active.");
             return true;
         }
         switch (VoteOption) {
             case "yes":
                 if (override) {
-                    VoteGlobals.VoteYes += 999;
+                    VoteGlobals.yesCount += 999;
                     Bukkit.broadcastMessage(ChatColor.YELLOW + "The vote was overriden by " + sender.getName());
                 }
-                for (Player p : VoteGlobals.VotedPlayers) {
+                for (Player p : VoteGlobals.playersWhoHaveVoted) {
                     if (p == s) {
                         sender.sendMessage(ChatColor.RED + "Error: You have voted already.");
                         return true;
                     }
                 }
-                VoteGlobals.VoteYes += 1;
+                VoteGlobals.yesCount += 1;
                 sender.sendMessage(ChatColor.GRAY + "Vote successful.");
-                VoteGlobals.VotedPlayers.add(s);
-                JavaPlugin.getProvidingPlugin(getClass()).getLogger().log(Level.INFO, "Player " + s.getName() + " has voted YES to " + VoteGlobals.VoteType);
+                VoteGlobals.playersWhoHaveVoted.add(s);
+                JavaPlugin.getProvidingPlugin(getClass()).getLogger().log(Level.INFO, "Player " + s.getName() + " has voted YES to " + VoteGlobals.voteType);
                 return true;
             case "no":
                 if (override) {
-                    VoteGlobals.VoteNo += 999;
+                    VoteGlobals.noCount += 999;
                     Bukkit.broadcastMessage(ChatColor.YELLOW + "The vote was overriden by " + sender.getName());
                 }
-                for (Player p : VoteGlobals.VotedPlayers) {
+                for (Player p : VoteGlobals.playersWhoHaveVoted) {
                     if (p == s) {
                         sender.sendMessage(ChatColor.RED + "Error: You have voted already.");
                         return true;
                     }
                 }
-                VoteGlobals.VoteNo += 1;
+                VoteGlobals.noCount += 1;
                 sender.sendMessage(ChatColor.GRAY + "Vote successful.");
-                VoteGlobals.VotedPlayers.add(s);
-                JavaPlugin.getProvidingPlugin(getClass()).getLogger().log(Level.INFO, "Player " + s.getName() + " has voted NO to " + VoteGlobals.VoteType);
+                VoteGlobals.playersWhoHaveVoted.add(s);
+                JavaPlugin.getProvidingPlugin(getClass()).getLogger().log(Level.INFO, "Player " + s.getName() + " has voted NO to " + VoteGlobals.voteType);
                 return true;
             default:
                 sender.sendMessage(ChatColor.RED + "Error: Invalid vote option.");
@@ -66,4 +66,3 @@ public class CommandVote implements CommandExecutor {
         }
     }
 };
-

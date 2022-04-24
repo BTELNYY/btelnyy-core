@@ -16,16 +16,16 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class CommandVTP implements CommandExecutor {
 
     @Override
-    public boolean onCommand(CommandSender sender, Command command, String arg2, String[] args) {
+    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (args.length < 2) {
             sender.sendMessage(ChatColor.RED + "Error: Invalid syntax. Usage: /vtp <player> <kick/ban");
             return true;
         }
-        if (VoteGlobals.VoteExists) {
+        if (VoteGlobals.voteExists) {
             sender.sendMessage(ChatColor.RED + "Error: A vote is already in progress, wait until it has concluded.");
             return true;
         }
-        Player s = (Player) sender;
+        Player senderPlayer = (Player) sender;
         Player player = Bukkit.getPlayer(args[0]);
         if (player == null) {
             sender.sendMessage(ChatColor.RED + "Error: Player not found.");
@@ -43,34 +43,34 @@ public class CommandVTP implements CommandExecutor {
                     sender.sendMessage(ChatColor.RED + "Error: You do not have permission to start a vote with this type of punishment.");
                     return true;
                 }
-                VoteGlobals.VoteType = "ban";
+                VoteGlobals.voteType = "ban";
                 Bukkit.broadcastMessage(ChatColor.YELLOW + sender.getName() + " wants to ban " + player.getName());
-                VoteGlobals.VoteExists = true;
-                JavaPlugin.getProvidingPlugin(getClass()).getLogger().log(Level.INFO, s.getName() + " wants to ban " + player.getName());
+                VoteGlobals.voteExists = true;
+                JavaPlugin.getProvidingPlugin(getClass()).getLogger().log(Level.INFO, senderPlayer.getName() + " wants to ban " + player.getName());
                 try {
-                    new PunishPlayerRunnable().start(VoteGlobals.VoteTimer);
+                    new PunishPlayerRunnable().start(VoteGlobals.voteTimer);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
                 Bukkit.broadcastMessage(ChatColor.YELLOW + "You have 30 seconds to vote.");
-                VoteGlobals.starter = s;
+                VoteGlobals.starter = senderPlayer;
                 break;
             case "kick":
                 if (!sender.hasPermission("btelnyy.vote.kick")) {
                     sender.sendMessage(ChatColor.RED + "Error: You do not have permission to start a vote with this type of punishment.");
                     return true;
                 }
-                VoteGlobals.VoteType = "kick";
+                VoteGlobals.voteType = "kick";
                 Bukkit.broadcastMessage(ChatColor.YELLOW + sender.getName() + " wants to kick " + player.getName());
-                VoteGlobals.VoteExists = true;
-                JavaPlugin.getProvidingPlugin(getClass()).getLogger().log(Level.INFO, s.getName() + " wants to kick " + player.getName());
+                VoteGlobals.voteExists = true;
+                JavaPlugin.getProvidingPlugin(getClass()).getLogger().log(Level.INFO, senderPlayer.getName() + " wants to kick " + player.getName());
                 try {
-                    new PunishPlayerRunnable().start(VoteGlobals.VoteTimer);
+                    new PunishPlayerRunnable().start(VoteGlobals.voteTimer);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                Bukkit.broadcastMessage(ChatColor.YELLOW + "You have " + VoteGlobals.VoteTimer + " seconds to vote.");
-                VoteGlobals.starter = s;
+                Bukkit.broadcastMessage(ChatColor.YELLOW + "You have " + VoteGlobals.voteTimer + " seconds to vote.");
+                VoteGlobals.starter = senderPlayer;
                 break;
             default:
                 sender.sendMessage(ChatColor.RED + "Error: Invalid punishment.");

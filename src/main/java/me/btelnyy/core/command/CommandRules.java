@@ -10,15 +10,13 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
-import me.btelnyy.core.constant.Globals;
-import me.btelnyy.core.CorePlugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class CommandRules implements CommandExecutor {
 
     private static String rules = "";
 
-    public boolean onCommand(CommandSender sender, Command command, String arg2, String[] args) {
+    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 
         String[] rulelines = rules.split("\\r?\\n");
         for (String rule : rulelines) {
@@ -27,7 +25,7 @@ public class CommandRules implements CommandExecutor {
         return true;
     }
 
-    public static void LoadMessages() {
+    public static void loadMessages() {
         File f = new File(JavaPlugin.getProvidingPlugin(CommandRules.class).getDataFolder(), "rules.txt");
         Path p = f.toPath();
         if (!f.exists()) {

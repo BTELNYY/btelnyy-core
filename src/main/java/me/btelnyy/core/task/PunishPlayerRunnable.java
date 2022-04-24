@@ -19,37 +19,37 @@ public class PunishPlayerRunnable extends BukkitRunnable {
 
     @Override
     public void run() {
-        VoteGlobals.VoteExists = false;
-        BanList BanList = Bukkit.getBanList(Type.NAME);
-        if (VoteGlobals.VoteYes > VoteGlobals.VoteNo) {
-            Bukkit.broadcastMessage(ChatColor.GREEN + "Vote passed, " + VoteGlobals.target.getName() + " has received a " + VoteGlobals.VoteType);
-            VoteGlobals.VoteExists = false;
-            VoteGlobals.VotedPlayers.clear();
-            VoteGlobals.VoteYes = 0;
-            VoteGlobals.VoteNo = 0;
-            if (VoteGlobals.VoteType == "kick") {
-                kick(VoteGlobals.target, ChatColor.RED, "You were kicked by vote");
+        VoteGlobals.voteExists = false;
+        BanList banList = Bukkit.getBanList(Type.NAME);
+        if (VoteGlobals.yesCount > VoteGlobals.noCount) {
+            Bukkit.broadcastMessage(ChatColor.GREEN + "Vote passed, " + VoteGlobals.target.getName() + " has received a " + VoteGlobals.voteType);
+            VoteGlobals.voteExists = false;
+            VoteGlobals.playersWhoHaveVoted.clear();
+            VoteGlobals.yesCount = 0;
+            VoteGlobals.noCount = 0;
+            if (VoteGlobals.voteType.equals("kick")) {
+                kick(VoteGlobals.target, "You were kicked by vote");
                 JavaPlugin.getProvidingPlugin(getClass()).getLogger().log(Level.INFO, "Player " + VoteGlobals.target.getName() + " has been kicked due to vote");
             }
             ;
-            if (VoteGlobals.VoteType == "ban") {
-                BanList.addBan(VoteGlobals.target.getName(), ChatColor.RED + "You were banned by vote", null, null);
-                kick(VoteGlobals.target, ChatColor.RED, "You were banned by vote");
+            if (VoteGlobals.voteType.equals("ban")) {
+                banList.addBan(VoteGlobals.target.getName(), ChatColor.RED + "You were banned by vote", null, null);
+                kick(VoteGlobals.target, "You were banned by vote");
                 JavaPlugin.getProvidingPlugin(getClass()).getLogger().log(Level.INFO, "Player " + VoteGlobals.target.getName() + " has been banned due to vote");
             }
             ;
         } else {
-            Bukkit.broadcastMessage(ChatColor.RED + "Vote failed, not enough votes to " + VoteGlobals.VoteType + " " + VoteGlobals.target.getName() + ".");
+            Bukkit.broadcastMessage(ChatColor.RED + "Vote failed, not enough votes to " + VoteGlobals.voteType + " " + VoteGlobals.target.getName() + ".");
             JavaPlugin.getProvidingPlugin(getClass()).getLogger().log(Level.INFO, "Vote failed.");
-            VoteGlobals.VoteExists = false;
-            VoteGlobals.VotedPlayers.clear();
-            VoteGlobals.VoteYes = 0;
-            VoteGlobals.VoteNo = 0;
+            VoteGlobals.voteExists = false;
+            VoteGlobals.playersWhoHaveVoted.clear();
+            VoteGlobals.yesCount = 0;
+            VoteGlobals.noCount = 0;
         }
         ;
     }
 
-    static void kick(Player p, ChatColor Color, String Message) {
-        p.kickPlayer(Color + Message);
+    static void kick(Player player, String message) {
+        player.kickPlayer(ChatColor.RED + message);
     }
 }

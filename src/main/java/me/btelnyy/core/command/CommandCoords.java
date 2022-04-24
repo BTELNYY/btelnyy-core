@@ -30,12 +30,12 @@ public class CommandCoords implements CommandExecutor {
                 sender.sendMessage(ChatColor.RED + "Error: Player not found.");
                 return true;
             } else {
-                Player player_target = Bukkit.getPlayer(args[0]);
-                Location pos = player_target.getEyeLocation();
+                Player targetPlayer = Bukkit.getPlayer(args[0]);
+                Location pos = targetPlayer.getEyeLocation();
                 int x = pos.getBlockX();
                 int y = pos.getBlockY();
                 int z = pos.getBlockZ();
-                sender.sendMessage(ChatColor.GRAY + player_target.getName() + "'s position: (XYZ) " + x + " " + y + " " + z);
+                sender.sendMessage(ChatColor.GRAY + targetPlayer.getName() + "'s position: (XYZ) " + x + " " + y + " " + z);
             }
         } else {
             Player player = (Player) sender;

@@ -11,21 +11,21 @@ import org.bukkit.entity.Player;
 
 public class CommandVoteServerRestart implements CommandExecutor {
 
-    public boolean onCommand(CommandSender sender, Command command, String arg2, String[] args) {
-        if (VoteGlobals.VoteExists) {
+    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+        if (VoteGlobals.voteExists) {
             sender.sendMessage(ChatColor.RED + "Error: A vote is already in progress, wait until it has concluded.");
             return true;
         }
         Player p = (Player) sender;
-        VoteGlobals.VoteType = "restart";
+        VoteGlobals.voteType = "restart";
         Bukkit.broadcastMessage(ChatColor.YELLOW + p.getName() + " wants to restart the server.");
         Bukkit.broadcastMessage(ChatColor.YELLOW + "You have 30 seconds to vote.");
         try {
-            new RestartServerRunnable().start(VoteGlobals.VoteTimer);
+            new RestartServerRunnable().start(VoteGlobals.voteTimer);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        VoteGlobals.VoteExists = true;
+        VoteGlobals.voteExists = true;
         return true;
     }
 }

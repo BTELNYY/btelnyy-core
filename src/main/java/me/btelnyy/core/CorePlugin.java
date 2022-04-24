@@ -32,13 +32,13 @@ public class CorePlugin extends JavaPlugin {
         // event handle
         getServer().getPluginManager().registerEvents(new EventListener(), this);
         // load the rules
-        CommandRules.LoadMessages();
+        CommandRules.loadMessages();
         // load MOTD on plugin enable
-        MOTDUtil.LoadMOTD();
+        MOTDUtil.loadMOTD();
         // load suicide messages on enable
-        CommandSuicide.LoadMessages();
+        CommandSuicide.loadMessages();
         // load config
-        LoadConfig();
+        loadConfig();
         this.getCommand("suicide").setExecutor(new CommandSuicide());
         this.getCommand("dc").setExecutor(new CommandDisconnect());
         this.getCommand("rules").setExecutor(new CommandRules());
@@ -54,26 +54,26 @@ public class CorePlugin extends JavaPlugin {
         this.getCommand("breload").setExecutor(new CommandReload());
     }
 
-    public static void LoadConfig() {
+    public static void loadConfig() {
         JavaPlugin plugin = JavaPlugin.getProvidingPlugin(CorePlugin.class);
 
         FileConfiguration config = plugin.getConfig();
-        VoteGlobals.VoteTimer = config.getInt("vote_timer");
-        plugin.getLogger().log(Level.INFO, "vote_timer: " + VoteGlobals.VoteTimer);
-        Globals.PvpToggled = config.getBoolean("default_pvp_toggle");
-        plugin.getLogger().log(Level.INFO, "default_pvp_toggle: " + Globals.PvpToggled);
-        Globals.HardcoreResult = config.getString("on_hardcore_death");
-        plugin.getLogger().log(Level.INFO, "on_hardcore_death: (pre-check) " + Globals.HardcoreResult);
-        if (!Arrays.asList(Globals.hoptions).contains(Globals.HardcoreResult)) {
+        VoteGlobals.voteTimer = config.getInt("vote_timer");
+        plugin.getLogger().log(Level.INFO, "vote_timer: " + VoteGlobals.voteTimer);
+        Globals.pvpToggled = config.getBoolean("default_pvp_toggle");
+        plugin.getLogger().log(Level.INFO, "default_pvp_toggle: " + Globals.pvpToggled);
+        Globals.hardcoreResult = config.getString("on_hardcore_death");
+        plugin.getLogger().log(Level.INFO, "on_hardcore_death: (pre-check) " + Globals.hardcoreResult);
+        if (!Arrays.asList(Globals.hOptions).contains(Globals.hardcoreResult)) {
             plugin.getLogger().log(Level.WARNING, "Your configuration for hardcore result is incorrect, loaded default value.");
-            Globals.HardcoreResult = Globals.hoptions[0];
+            Globals.hardcoreResult = Globals.hOptions[0];
         } else {
-            Globals.HardcoreResult = config.getString("on_hardcore_death");
+            Globals.hardcoreResult = config.getString("on_hardcore_death");
         }
-        plugin.getLogger().log(Level.INFO, "on_hardcore_death: " + Globals.HardcoreResult);
-        Globals.TpToDeathHardcore = config.getBoolean("tp_to_death_hardcore");
-        plugin.getLogger().log(Level.INFO, "tp_to_death_hardcore: " + Globals.TpToDeathHardcore);
-        Globals.ShowDeathTitle = config.getBoolean("show_death_title");
-        plugin.getLogger().log(Level.INFO, "show_death_title: " + Globals.ShowDeathTitle);
+        plugin.getLogger().log(Level.INFO, "on_hardcore_death: " + Globals.hardcoreResult);
+        Globals.tpToDeathHardcore = config.getBoolean("tp_to_death_hardcore");
+        plugin.getLogger().log(Level.INFO, "tp_to_death_hardcore: " + Globals.tpToDeathHardcore);
+        Globals.showDeathTitle = config.getBoolean("show_death_title");
+        plugin.getLogger().log(Level.INFO, "show_death_title: " + Globals.showDeathTitle);
     }
 }

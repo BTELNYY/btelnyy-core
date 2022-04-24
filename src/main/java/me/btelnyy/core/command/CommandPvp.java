@@ -11,15 +11,15 @@ import org.bukkit.command.CommandExecutor;
 
 public class CommandPvp implements CommandExecutor {
 
-    public boolean onCommand(CommandSender sender, Command command, String arg2, String[] args) {
-        Globals.PvpToggled = !Globals.PvpToggled;
-        if (Globals.PvpToggled) {
+    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+        Globals.pvpToggled = !Globals.pvpToggled;
+        if (Globals.pvpToggled) {
             sender.sendMessage(ChatColor.GRAY + "PVP is now enabled.");
-            MessageUtility.SendToOps("Enabled PVP", sender);
+            MessageUtility.messageOperators("Enabled PVP", sender);
             return true;
         } else {
             sender.sendMessage(ChatColor.GRAY + "PVP is now disabled.");
-            MessageUtility.SendToOps("Disabled PVP", sender);
+            MessageUtility.messageOperators("Disabled PVP", sender);
             return true;
         }
     }

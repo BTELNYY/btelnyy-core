@@ -8,10 +8,10 @@ import org.bukkit.entity.Player;
 
 public class CommandPing implements CommandExecutor {
 
-    public boolean onCommand(CommandSender sender, Command command, String arg2, String[] args) {
+    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (sender instanceof Player) {
-            Player p = (Player) sender;
-            int ping = p.getPing();
+            Player player = (Player) sender;
+            int ping = player.getPing();
             sender.sendMessage(ChatColor.GRAY + "Ping: " + ping + "ms");
             return true;
         } else {

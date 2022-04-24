@@ -11,12 +11,12 @@ import org.bukkit.command.CommandExecutor;
 
 public class CommandReload implements CommandExecutor {
 
-    public boolean onCommand(CommandSender sender, Command command, String arg2, String[] args) {
+    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         sender.sendMessage(ChatColor.GRAY + "Reloading plugin configuration and text files.");
-        MOTDUtil.LoadMOTD();
-        CommandRules.LoadMessages();
-        CommandSuicide.LoadMessages();
-        CorePlugin.LoadConfig();
+        MOTDUtil.loadMOTD();
+        CommandRules.loadMessages();
+        CommandSuicide.loadMessages();
+        CorePlugin.loadConfig();
         sender.sendMessage(ChatColor.GRAY + "Done.");
         return true;
     }

@@ -12,15 +12,13 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import me.btelnyy.core.constant.Globals;
-import me.btelnyy.core.CorePlugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class CommandSuicide implements CommandExecutor {
 
     public static String[] array = {};
 
-    public static void LoadMessages() {
+    public static void loadMessages() {
         File f = new File(JavaPlugin.getProvidingPlugin(CommandRules.class).getDataFolder(), "death_msg.txt");
         Path p = f.toPath();
         String deaths = "";
@@ -42,11 +40,11 @@ public class CommandSuicide implements CommandExecutor {
     }
 
     @Override
-    public boolean onCommand(CommandSender sender, Command command, String arg2, String[] args) {
+    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (sender instanceof Player) {
             ((Player) sender).setHealth(0);
             Random rand = new Random();
-            int random = rand.nextInt(array.length) + 0;
+            int random = rand.nextInt(array.length);
             sender.sendMessage(ChatColor.RED + array[random]);
             return true;
         }

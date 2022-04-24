@@ -14,27 +14,27 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class RespawnUtil {
 
-    public static void RespawnPlayer(Player player, PlayerDeathEvent event, Location location) {
-        JavaPlugin.getProvidingPlugin(RespawnUtil.class).getLogger().log(Level.INFO, "About to respawn player. config: " + Globals.HardcoreResult);
-        if (Globals.HardcoreResult.equals(Globals.hoptions[0])) {
-            if (Globals.TpToDeathHardcore) {
+    public static void respawnPlayer(Player player, PlayerDeathEvent event, Location location) {
+        JavaPlugin.getProvidingPlugin(RespawnUtil.class).getLogger().log(Level.INFO, "About to respawn player. config: " + Globals.hardcoreResult);
+        if (Globals.hardcoreResult.equals(Globals.hOptions[0])) {
+            if (Globals.tpToDeathHardcore) {
                 player.setGameMode(GameMode.SPECTATOR);
                 player.teleport(location);
             } else {
                 player.setGameMode(GameMode.SPECTATOR);
             }
-        } else if (Globals.HardcoreResult.equals(Globals.hoptions[1])) {
-            GhostPlayer(player, event, location);
+        } else if (Globals.hardcoreResult.equals(Globals.hOptions[1])) {
+            ghostPlayer(player, event, location);
         }
-        if (Globals.ShowDeathTitle) {
+        if (Globals.showDeathTitle) {
             player.sendTitle(ChatColor.RED + "YOU DIED!", "You cannot respawn in hardcore mode.", 20, 100, 20);
         }
-        Globals.DeadPlayers.add(player);
+        Globals.deadPlayers.add(player);
         player.spigot().respawn();
     }
 
-    public static void GhostPlayer(Player player, PlayerDeathEvent event, Location location) {
-        if (Globals.TpToDeathHardcore) {
+    public static void ghostPlayer(Player player, PlayerDeathEvent event, Location location) {
+        if (Globals.tpToDeathHardcore) {
             player.setGameMode(GameMode.ADVENTURE);
             player.setAllowFlight(true);
             player.setInvisible(true);
@@ -53,10 +53,10 @@ public class RespawnUtil {
         return;
     }
 
-    public static void RevivePlayer(Player player) {
-        GameMode gm = Bukkit.getDefaultGameMode();
+    public static void revivePlayer(Player player) {
+        GameMode gamemode = Bukkit.getDefaultGameMode();
         Location spawn = Bukkit.getServer().getWorld(player.getLocation().getWorld().getName()).getSpawnLocation();
-        player.setGameMode(gm);
+        player.setGameMode(gamemode);
         player.setAllowFlight(false);
         player.setInvisible(false);
         player.setInvulnerable(false);
@@ -67,16 +67,16 @@ public class RespawnUtil {
         } else {
             player.teleport(spawn);
         }
-        Globals.DeadPlayers.remove(player);
+        Globals.deadPlayers.remove(player);
     }
 
-    public static void ReviveAll(Player sender) {
+    public static void reviveAll(Player sender) {
         try {
-            for (Player p : Globals.DeadPlayers) {
-                RespawnUtil.RevivePlayer(p);
+            for (Player p : Globals.deadPlayers) {
+                RespawnUtil.revivePlayer(p);
                 sender.sendMessage(ChatColor.GRAY + "Player " + p.getName() + " has been revived.");
             }
-            Globals.DeadPlayers.clear();
+            Globals.deadPlayers.clear();
         } catch (Exception e) {
             JavaPlugin.getProvidingPlugin(RespawnUtil.class).getLogger().log(Level.WARNING, "Exception while reviving all dead players: " + e.getMessage());
         }

@@ -9,7 +9,7 @@ import org.bukkit.entity.Player;
 public class CommandDisconnect implements CommandExecutor {
 
     @Override
-    public boolean onCommand(CommandSender sender, Command command, String arg2, String[] args) {
+    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (sender instanceof Player) {
             ((Player) sender).kickPlayer("Disconnected");
         }

@@ -18,7 +18,7 @@ public class EventListener implements Listener {
     @EventHandler
     public void onPing(ServerListPingEvent event) {
         //handles event and fires at the method
-        MOTDUtil.ChangeMOTD(event);
+        event.setMotd(MOTDUtil.getRandomMOTD());
     }
 
     @EventHandler
@@ -31,15 +31,15 @@ public class EventListener implements Listener {
         }
         Player player = (Player) event.getDamager();
         Player Target = (Player) event.getEntity();
-        if (!Globals.PvpToggled) {
+        if (!Globals.pvpToggled) {
             event.setCancelled(true);
             return;
         }
-        if (Globals.DeadPlayers.contains(Target)) {
+        if (Globals.deadPlayers.contains(Target)) {
             event.setCancelled(true);
             return;
         }
-        if (Globals.DeadPlayers.contains(player)) {
+        if (Globals.deadPlayers.contains(player)) {
             event.setCancelled(true);
             return;
         }
@@ -53,7 +53,7 @@ public class EventListener implements Listener {
         if (!(event.getHitEntity() instanceof Player)) {
             return;
         }
-        if (!Globals.PvpToggled) {
+        if (!Globals.pvpToggled) {
             event.setCancelled(true);
         }
     }
@@ -61,11 +61,11 @@ public class EventListener implements Listener {
     @EventHandler
     public void onEntityDeath(PlayerDeathEvent event) {
         //dont trigger unless the entity is a player and hardcore mode is on
-        if (!Globals.HardcoreToggled) {
+        if (!Globals.hardcoreToggled) {
             return;
         }
-        Player p = event.getEntity();
+        Player player = event.getEntity();
         Location deathlocation = event.getEntity().getLocation();
-        RespawnUtil.RespawnPlayer(p, event, deathlocation);
+        RespawnUtil.respawnPlayer(player, event, deathlocation);
     }
 }

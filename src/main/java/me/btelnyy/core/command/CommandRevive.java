@@ -13,7 +13,7 @@ import me.btelnyy.core.util.MessageUtility;
 
 public class CommandRevive implements CommandExecutor {
 
-    public boolean onCommand(CommandSender sender, Command command, String arg2, String[] args) {
+    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (args.length < 1) {
             sender.sendMessage(ChatColor.RED + "Error: Invalid syntax. Usage: /revive <player>");
             return true;
@@ -22,14 +22,14 @@ public class CommandRevive implements CommandExecutor {
             sender.sendMessage(ChatColor.RED + "Error: Player not found.");
             return true;
         }
-        Player ReviveTarget = Bukkit.getPlayer(args[0]);
-        if (!Globals.DeadPlayers.contains(ReviveTarget)) {
+        Player revivalTarget = Bukkit.getPlayer(args[0]);
+        if (!Globals.deadPlayers.contains(revivalTarget)) {
             sender.sendMessage(ChatColor.RED + "Error: Player is not dead.");
             return true;
         }
-        RespawnUtil.RevivePlayer(ReviveTarget);
-        sender.sendMessage(ChatColor.GRAY + "Player " + ReviveTarget.getName() + " has been revived.");
-        MessageUtility.SendToOps("Has revived " + ReviveTarget.getName(), sender);
+        RespawnUtil.revivePlayer(revivalTarget);
+        sender.sendMessage(ChatColor.GRAY + "Player " + revivalTarget.getName() + " has been revived.");
+        MessageUtility.messageOperators("Has revived " + revivalTarget.getName(), sender);
         return true;
     }
 }
