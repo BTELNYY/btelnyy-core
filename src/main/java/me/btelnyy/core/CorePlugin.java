@@ -7,6 +7,8 @@ import me.btelnyy.core.service.TextFileMessageService;
 import me.btelnyy.core.command.CommandVTP;
 import me.btelnyy.core.command.CommandVote;
 import me.btelnyy.core.command.CommandVoteServerRestart;
+import org.bukkit.command.CommandExecutor;
+import org.bukkit.command.PluginCommand;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
@@ -46,18 +48,25 @@ public class CorePlugin extends JavaPlugin {
         // event handle
         getServer().getPluginManager().registerEvents(new EventListener(motdMessageService), this);
 
-        this.getCommand("suicide").setExecutor(new CommandSuicide(suicideMessageService));
-        this.getCommand("dc").setExecutor(new CommandDisconnect());
-        this.getCommand("rules").setExecutor(new CommandRules(rulesMessageService));
-        this.getCommand("vtp").setExecutor(new CommandVTP());
-        this.getCommand("vote").setExecutor(new CommandVote());
-        this.getCommand("ping").setExecutor(new CommandPing());
-        this.getCommand("voterestart").setExecutor(new CommandVoteServerRestart());
-        this.getCommand("pvp").setExecutor(new CommandPvp());
-        this.getCommand("hardcore").setExecutor(new CommandHardcore());
-        this.getCommand("revive").setExecutor(new CommandRevive());
-        this.getCommand("reviveall").setExecutor(new CommandReviveAll());
-        this.getCommand("whereamI").setExecutor(new CommandCoords());
-        this.getCommand("breload").setExecutor(new CommandReload(configLoaderService, rulesMessageService, motdMessageService, suicideMessageService));
+        registerCommandExecutor("suicide",     new CommandSuicide(suicideMessageService));
+        registerCommandExecutor("dc",          new CommandDisconnect());
+        registerCommandExecutor("rules",       new CommandRules(rulesMessageService));
+        registerCommandExecutor("vtp",         new CommandVTP());
+        registerCommandExecutor("vote",        new CommandVote());
+        registerCommandExecutor("ping",        new CommandPing());
+        registerCommandExecutor("voterestart", new CommandVoteServerRestart());
+        registerCommandExecutor("pvp",         new CommandPvp());
+        registerCommandExecutor("hardcore",    new CommandHardcore());
+        registerCommandExecutor("revive",      new CommandRevive());
+        registerCommandExecutor("reviveall",   new CommandReviveAll());
+        registerCommandExecutor("whereamI",    new CommandCoords());
+        registerCommandExecutor("breload",     new CommandReload(configLoaderService, rulesMessageService, motdMessageService, suicideMessageService));
+    }
+
+    private void registerCommandExecutor(String commandName, CommandExecutor commandExecutor) {
+        PluginCommand command = this.getCommand(commandName);
+        if (command == null)
+            throw new NullPointerException(String.format("\"%s\" is not registered in the plugin.yml", commandName));
+        command.setExecutor(commandExecutor);
     }
 }
