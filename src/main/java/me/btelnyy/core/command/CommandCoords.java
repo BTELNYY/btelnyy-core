@@ -3,7 +3,6 @@ package me.btelnyy.core.command;
 import me.btelnyy.core.constant.MessageKeys;
 import me.btelnyy.core.service.MessageService;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
