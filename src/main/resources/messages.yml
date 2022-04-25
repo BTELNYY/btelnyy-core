@@ -1,0 +1,8 @@
+errors:
+  player-not-found: "&cError: {{player}} is not online."
+  players-only: "&cError: You must be a player to run this command."
+
+commands:
+  coords:
+    self: "&7Your position: (XYZ) {{x}} {{y}} {{z}}"
+    other: "&7{{target}}'s position: (XYZ) {{x}} {{y}} {{z}}"

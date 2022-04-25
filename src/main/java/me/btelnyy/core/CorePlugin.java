@@ -3,6 +3,7 @@ package me.btelnyy.core;
 import me.btelnyy.core.command.*;
 import me.btelnyy.core.listener.EventListener;
 import me.btelnyy.core.service.ConfigLoaderService;
+import me.btelnyy.core.service.MessageService;
 import me.btelnyy.core.service.TextFileMessageService;
 
 import org.bukkit.command.CommandExecutor;
@@ -26,6 +27,13 @@ public class CorePlugin extends JavaPlugin {
                 e.printStackTrace();
             }
         }
+
+        // load the messages
+        File messagesFile = new File(getDataFolder(), "messages.yml");
+        if (!messagesFile.exists())
+            saveResource("messages.yml", false);
+        MessageService messageService = new MessageService(messagesFile);
+        messageService.loadMessages();
 
         // load the rules
         TextFileMessageService rulesMessageService = new TextFileMessageService(new File(getDataFolder(), "rules.txt"), getLogger());
@@ -57,7 +65,7 @@ public class CorePlugin extends JavaPlugin {
         registerCommandExecutor("hardcore",    new CommandHardcore());
         registerCommandExecutor("revive",      new CommandRevive());
         registerCommandExecutor("reviveall",   new CommandReviveAll());
-        registerCommandExecutor("whereamI",    new CommandCoords());
+        registerCommandExecutor("whereamI",    new CommandCoords(messageService));
         registerCommandExecutor("breload",     new CommandReload(configLoaderService, rulesMessageService, motdMessageService, suicideMessageService));
         registerCommandExecutor("myspawn", new CommandMySpawn());
         getLogger().log(Level.INFO, "Check out the project on GitHub!: https://github.com/BTELNYY/btelnyy-core");
