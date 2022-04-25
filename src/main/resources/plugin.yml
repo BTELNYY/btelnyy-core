@@ -55,3 +55,7 @@ commands:
       description: Reloads btelnyy-core's config
       usage: /breload
       permission: btelnyy.command.reloadcore
+   myspawn:
+      description: Get where you spawn
+      usage: /myspawn
+      permission: btelnyy.command.myspawn

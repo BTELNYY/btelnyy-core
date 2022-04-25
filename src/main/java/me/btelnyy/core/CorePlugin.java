@@ -4,9 +4,7 @@ import me.btelnyy.core.command.*;
 import me.btelnyy.core.listener.EventListener;
 import me.btelnyy.core.service.ConfigLoaderService;
 import me.btelnyy.core.service.TextFileMessageService;
-import me.btelnyy.core.command.CommandVTP;
-import me.btelnyy.core.command.CommandVote;
-import me.btelnyy.core.command.CommandVoteServerRestart;
+
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.PluginCommand;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -61,7 +59,7 @@ public class CorePlugin extends JavaPlugin {
         registerCommandExecutor("reviveall",   new CommandReviveAll());
         registerCommandExecutor("whereamI",    new CommandCoords());
         registerCommandExecutor("breload",     new CommandReload(configLoaderService, rulesMessageService, motdMessageService, suicideMessageService));
-
+        registerCommandExecutor("myspawn", new CommandMySpawn());
         getLogger().log(Level.INFO, "Check out the project on GitHub!: https://github.com/BTELNYY/btelnyy-core");
     }
 
