@@ -35,9 +35,10 @@ bin/
 # Ignore chad IDE files
 .idea/
 *.iml
+
+.vscode/
 *.code-workspace
 
 # Ignore chad Maven files
 target/
 dependency-reduced-pom.xml
-.vscode/
