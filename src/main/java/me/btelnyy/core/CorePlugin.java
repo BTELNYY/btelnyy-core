@@ -8,9 +8,13 @@ import me.btelnyy.core.service.TextFileMessageService;
 
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.PluginCommand;
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.yaml.snakeyaml.Yaml;
 
 import java.io.File;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.logging.Level;
 
 public class CorePlugin extends JavaPlugin {
@@ -32,7 +36,15 @@ public class CorePlugin extends JavaPlugin {
         File messagesFile = new File(getDataFolder(), "messages.yml");
         if (!messagesFile.exists())
             saveResource("messages.yml", false);
-        MessageService messageService = new MessageService(messagesFile);
+
+        YamlConfiguration messageDefaults;
+        InputStream messageDefaultsStream = getResource("messages.yml");
+        if (messageDefaultsStream == null)
+            messageDefaults = null;
+        else
+            messageDefaults = YamlConfiguration.loadConfiguration(new InputStreamReader(messageDefaultsStream));
+
+        MessageService messageService = new MessageService(messagesFile, messageDefaults);
         messageService.loadMessages();
 
         // load the rules
@@ -52,7 +64,7 @@ public class CorePlugin extends JavaPlugin {
         configLoaderService.loadConfig();
 
         // event handle
-        getServer().getPluginManager().registerEvents(new EventListener(motdMessageService), this);
+        getServer().getPluginManager().registerEvents(new EventListener(messageService, motdMessageService), this);
 
         registerCommandExecutor("suicide",     new CommandSuicide(suicideMessageService));
         registerCommandExecutor("dc",          new CommandDisconnect());

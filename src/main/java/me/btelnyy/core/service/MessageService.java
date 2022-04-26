@@ -2,6 +2,7 @@ package me.btelnyy.core.service;
 
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.configuration.Configuration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 import java.io.File;
@@ -13,17 +14,26 @@ import java.util.regex.Pattern;
 
 public final class MessageService {
 
-    private final File messageSourceFile;
-    private final Map<String, String[]> messageByKeyMap = new HashMap<>();
+    private final File                  messageSourceFile;
+    private final Configuration         configurationDefaults;
+    private final Map<String, String[]> messageByKeyMap;
 
     public MessageService(File messageSourceFile) {
-        this.messageSourceFile = messageSourceFile;
+        this(messageSourceFile, null);
+    }
+
+    public MessageService(File messageSourceFile, Configuration configurationDefaults) {
+        this.messageSourceFile     = messageSourceFile;
+        this.configurationDefaults = configurationDefaults;
+        this.messageByKeyMap       = new HashMap<>();
     }
 
     public void loadMessages() {
         messageByKeyMap.clear();
 
         YamlConfiguration messageSource = YamlConfiguration.loadConfiguration(messageSourceFile);
+        if (configurationDefaults != null)
+            messageSource.addDefaults(configurationDefaults);
         for (String messageKey : messageSource.getKeys(true))
             if (messageSource.isString(messageKey))
                 messageByKeyMap.put(messageKey, new String[] { messageSource.getString(messageKey) });
