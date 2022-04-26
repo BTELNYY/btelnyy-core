@@ -1,12 +1,11 @@
 package me.btelnyy.core.listener;
 
+import com.github.writingbettercodethanyou.chadpluginframework.message.MessageService;
 import me.btelnyy.core.constant.Globals;
 import me.btelnyy.core.constant.MessageKeys;
-import me.btelnyy.core.service.MessageService;
 import me.btelnyy.core.service.TextFileMessageService;
 import me.btelnyy.core.util.RespawnUtil;
 
-import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
@@ -16,12 +15,11 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityToggleGlideEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.entity.ProjectileHitEvent;
-import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.server.ServerListPingEvent;
 
 public class EventListener implements Listener {
 
-    private final MessageService         messageService;
+    private final MessageService messageService;
     private final TextFileMessageService motdMessageService;
 
     public EventListener(MessageService messageService, TextFileMessageService motdMessageService) {
