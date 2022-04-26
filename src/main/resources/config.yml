@@ -9,3 +9,5 @@ on_hardcore_death: "SPECTATOR"
 tp_to_death_hardcore: true
 #show players the death title (YOU DIED! Subtitle: You cannot respawn in hardcore mode)
 show_death_title: true
+#should players be able to use elytra
+elytra_allowed: true

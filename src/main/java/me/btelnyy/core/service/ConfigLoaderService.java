@@ -36,5 +36,7 @@ public final class ConfigLoaderService {
         logger.log(Level.INFO, "tp_to_death_hardcore: " + Globals.tpToDeathHardcore);
         Globals.showDeathTitle = config.getBoolean("show_death_title");
         logger.log(Level.INFO, "show_death_title: " + Globals.showDeathTitle);
+        Globals.elytraAllowed = config.getBoolean("elytra_allowed");
+        logger.log(Level.INFO, "elytra_allowed: " + Globals.elytraAllowed);
     }
 }

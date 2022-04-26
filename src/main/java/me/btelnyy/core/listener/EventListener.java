@@ -3,6 +3,8 @@ package me.btelnyy.core.listener;
 import me.btelnyy.core.constant.Globals;
 import me.btelnyy.core.service.TextFileMessageService;
 import me.btelnyy.core.util.RespawnUtil;
+
+import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
@@ -11,15 +13,19 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.entity.ProjectileHitEvent;
+import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.server.ServerListPingEvent;
 
 public class EventListener implements Listener {
-
     private final TextFileMessageService motdMessageService;
-
     public EventListener(TextFileMessageService motdMessageService) {
         this.motdMessageService = motdMessageService;
     }
+
+
+
+
+
 
     @EventHandler
     public void onPing(ServerListPingEvent event) {
@@ -63,7 +69,19 @@ public class EventListener implements Listener {
             event.setCancelled(true);
         }
     }
-
+    @EventHandler
+    public void playerMove(PlayerMoveEvent event){
+        Player player = event.getPlayer();
+        if(!player.isGliding()){
+            return;
+        }
+        if(Globals.elytraAllowed){
+            return;
+        }
+        event.setCancelled(true);
+        player.setGliding(false);
+        player.sendMessage(ChatColor.RED + "Elytra are disabled on this server!");
+    }
     @EventHandler
     public void onEntityDeath(PlayerDeathEvent event) {
         //dont trigger unless the entity is a player and hardcore mode is on
