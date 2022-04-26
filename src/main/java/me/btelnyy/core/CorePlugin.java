@@ -66,20 +66,21 @@ public class CorePlugin extends JavaPlugin {
         // event handle
         getServer().getPluginManager().registerEvents(new EventListener(messageService, motdMessageService), this);
 
-        registerCommandExecutor("suicide",     new CommandSuicide(suicideMessageService));
+        registerCommandExecutor("breload",     new CommandReload(configLoaderService, rulesMessageService, motdMessageService, suicideMessageService));
         registerCommandExecutor("dc",          new CommandDisconnect());
-        registerCommandExecutor("rules",       new CommandRules(rulesMessageService));
-        registerCommandExecutor("vtp",         new CommandVTP());
-        registerCommandExecutor("vote",        new CommandVote());
-        registerCommandExecutor("ping",        new CommandPing());
-        registerCommandExecutor("voterestart", new CommandVoteServerRestart());
-        registerCommandExecutor("pvp",         new CommandPvp());
         registerCommandExecutor("hardcore",    new CommandHardcore());
+        registerCommandExecutor("myspawn",     new CommandMySpawn());
+        registerCommandExecutor("ping",        new CommandPing());
+        registerCommandExecutor("pvp",         new CommandPvp());
         registerCommandExecutor("revive",      new CommandRevive());
         registerCommandExecutor("reviveall",   new CommandReviveAll());
-        registerCommandExecutor("whereamI",    new CommandCoords(messageService));
-        registerCommandExecutor("breload",     new CommandReload(configLoaderService, rulesMessageService, motdMessageService, suicideMessageService));
-        registerCommandExecutor("myspawn", new CommandMySpawn());
+        registerCommandExecutor("rules",       new CommandRules(rulesMessageService));
+        registerCommandExecutor("suicide",     new CommandSuicide(suicideMessageService));
+        registerCommandExecutor("vote",        new CommandVote());
+        registerCommandExecutor("voterestart", new CommandVoteServerRestart());
+        registerCommandExecutor("vtp",         new CommandVTP());
+        registerCommandExecutor("whereami",    new CommandCoords(messageService));
+
         getLogger().log(Level.INFO, "Check out the project on GitHub!: https://github.com/BTELNYY/btelnyy-core");
     }
 
