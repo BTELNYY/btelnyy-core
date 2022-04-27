@@ -9,7 +9,7 @@ import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public final class TextFileMessageService {
+public class TextFileMessageService {
 
     private static final Random RANDOM = new SecureRandom();
 

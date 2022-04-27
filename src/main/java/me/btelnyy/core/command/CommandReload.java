@@ -1,5 +1,6 @@
 package me.btelnyy.core.command;
 
+import com.github.writingbettercodethanyou.gamerpluginframework.command.RegisterForCommand;
 import me.btelnyy.core.service.ConfigLoaderService;
 import me.btelnyy.core.service.TextFileMessageService;
 import org.bukkit.command.Command;
@@ -8,12 +9,13 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandExecutor;
 
+@RegisterForCommand("breload")
 public class CommandReload implements CommandExecutor {
 
     private final ConfigLoaderService      configLoaderService;
     private final TextFileMessageService[] messageServices;
 
-    public CommandReload(ConfigLoaderService configLoaderService, TextFileMessageService... messageServices) {
+    public CommandReload(ConfigLoaderService configLoaderService, TextFileMessageService[] messageServices) {
         this.configLoaderService = configLoaderService;
         this.messageServices     = messageServices;
     }

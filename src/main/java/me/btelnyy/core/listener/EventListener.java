@@ -3,7 +3,7 @@ package me.btelnyy.core.listener;
 import com.github.writingbettercodethanyou.gamerpluginframework.message.MessageService;
 import me.btelnyy.core.constant.Globals;
 import me.btelnyy.core.constant.MessageKeys;
-import me.btelnyy.core.service.TextFileMessageService;
+import me.btelnyy.core.service.MotdMessageService;
 import me.btelnyy.core.util.RespawnUtil;
 
 import org.bukkit.Location;
@@ -20,9 +20,9 @@ import org.bukkit.event.server.ServerListPingEvent;
 public class EventListener implements Listener {
 
     private final MessageService messageService;
-    private final TextFileMessageService motdMessageService;
+    private final MotdMessageService motdMessageService;
 
-    public EventListener(MessageService messageService, TextFileMessageService motdMessageService) {
+    public EventListener(MessageService messageService, MotdMessageService motdMessageService) {
         this.messageService     = messageService;
         this.motdMessageService = motdMessageService;
     }

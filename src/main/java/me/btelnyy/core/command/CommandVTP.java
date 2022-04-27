@@ -2,6 +2,7 @@ package me.btelnyy.core.command;
 
 import java.util.logging.Level;
 
+import com.github.writingbettercodethanyou.gamerpluginframework.command.RegisterForCommand;
 import me.btelnyy.core.task.PunishPlayerRunnable;
 import me.btelnyy.core.constant.VoteGlobals;
 import org.bukkit.Bukkit;
@@ -13,6 +14,7 @@ import org.bukkit.entity.Player;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
+@RegisterForCommand("vtp")
 public class CommandVTP implements CommandExecutor {
 
     @Override

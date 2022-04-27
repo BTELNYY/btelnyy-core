@@ -1,11 +1,13 @@
 package me.btelnyy.core.command;
 
+import com.github.writingbettercodethanyou.gamerpluginframework.command.RegisterForCommand;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.entity.Player;
 import org.bukkit.command.*;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 
+@RegisterForCommand("myspawn")
 public class CommandMySpawn implements CommandExecutor {
 
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args){

@@ -1,5 +1,6 @@
 package me.btelnyy.core.command;
 
+import com.github.writingbettercodethanyou.gamerpluginframework.command.RegisterForCommand;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.Bukkit;
@@ -11,6 +12,7 @@ import me.btelnyy.core.constant.Globals;
 import me.btelnyy.core.util.RespawnUtil;
 import me.btelnyy.core.util.MessageUtility;
 
+@RegisterForCommand("revive")
 public class CommandRevive implements CommandExecutor {
 
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
