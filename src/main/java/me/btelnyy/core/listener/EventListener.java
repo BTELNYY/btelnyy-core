@@ -1,6 +1,6 @@
 package me.btelnyy.core.listener;
 
-import com.github.writingbettercodethanyou.chadpluginframework.message.MessageService;
+import com.github.writingbettercodethanyou.gamerpluginframework.message.MessageService;
 import me.btelnyy.core.constant.Globals;
 import me.btelnyy.core.constant.MessageKeys;
 import me.btelnyy.core.service.TextFileMessageService;

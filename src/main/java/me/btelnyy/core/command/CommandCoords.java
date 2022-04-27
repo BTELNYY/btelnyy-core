@@ -1,6 +1,6 @@
 package me.btelnyy.core.command;
 
-import com.github.writingbettercodethanyou.chadpluginframework.message.MessageService;
+import com.github.writingbettercodethanyou.gamerpluginframework.message.MessageService;
 import me.btelnyy.core.constant.MessageKeys;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;

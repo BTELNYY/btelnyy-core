@@ -1,7 +1,7 @@
 package me.btelnyy.core;
 
-import com.github.writingbettercodethanyou.chadpluginframework.ChadJavaPlugin;
-import com.github.writingbettercodethanyou.chadpluginframework.message.MessageService;
+import com.github.writingbettercodethanyou.gamerpluginframework.ChadJavaPlugin;
+import com.github.writingbettercodethanyou.gamerpluginframework.message.MessageService;
 import me.btelnyy.core.command.*;
 import me.btelnyy.core.listener.EventListener;
 import me.btelnyy.core.service.ConfigLoaderService;

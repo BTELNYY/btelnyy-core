@@ -33,8 +33,9 @@
 
     <dependency>
       <groupId>com.github.writingbettercodethanyou</groupId>
-      <artifactId>chad-plugin-framework</artifactId>
+      <artifactId>gamer-plugin-framework</artifactId>
       <version>0.1</version>
+      <scope>compile</scope>
     </dependency>
   </dependencies>
 
@@ -65,6 +66,15 @@
         <configuration>
           <createDependencyReducedPom>false</createDependencyReducedPom>
         </configuration>
+        <executions>
+          <execution>
+            <id>shade</id>
+            <phase>package</phase>
+            <goals>
+              <goal>shade</goal>
+            </goals>
+          </execution>
+        </executions>
       </plugin>
     </plugins>
   </build>
