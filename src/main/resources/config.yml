@@ -4,6 +4,7 @@ vote_timer: 30
 default_pvp_toggle: true
 #what should players do when they die in hardcore mode?
 #options: SPECTATOR, GHOST
+#fyi: ghost is buggy and should not be used.
 on_hardcore_death: "SPECTATOR"
 #should players be teleported to where they died in hardcore mode?
 tp_to_death_hardcore: true

@@ -1,7 +1,6 @@
 errors:
   player-not-found: "&cError: {{player}} is not online."
   players-only: "&cError: You must be a player to run this command."
-
   elytra-disabled: "&cElytra are disabled on this server!"
 
 commands:

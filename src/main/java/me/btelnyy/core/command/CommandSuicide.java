@@ -2,7 +2,6 @@ package me.btelnyy.core.command;
 
 import com.github.writingbettercodethanyou.gamerpluginframework.command.RegisterForCommand;
 import me.btelnyy.core.service.SuicideMessageService;
-import me.btelnyy.core.service.TextFileMessageService;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
