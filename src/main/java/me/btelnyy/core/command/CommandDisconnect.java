@@ -1,13 +1,11 @@
 package me.btelnyy.core.command;
 
-import com.github.writingbettercodethanyou.gamerpluginframework.command.RegisterForCommand;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-@RegisterForCommand("dc")
 public class CommandDisconnect implements CommandExecutor {
 
     @Override

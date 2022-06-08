@@ -1,6 +1,5 @@
 package me.btelnyy.core.command;
 
-import com.github.writingbettercodethanyou.gamerpluginframework.command.RegisterForCommand;
 import me.btelnyy.core.constant.VoteGlobals;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -13,7 +12,6 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
 
-@RegisterForCommand("vote")
 public class CommandVote implements CommandExecutor {
 
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {

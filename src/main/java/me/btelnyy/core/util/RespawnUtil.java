@@ -15,7 +15,6 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class RespawnUtil {
 
     public static void respawnPlayer(Player player, PlayerDeathEvent event, Location location) {
-        
         JavaPlugin.getProvidingPlugin(RespawnUtil.class).getLogger().log(Level.INFO, "About to respawn player. config: " + Globals.hardcoreResult);
         if (Globals.hardcoreResult.equals(Globals.hOptions[0])) {
             if (Globals.tpToDeathHardcore) {

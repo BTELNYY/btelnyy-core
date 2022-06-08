@@ -1,8 +1,7 @@
 package me.btelnyy.core.command;
 
-import com.github.writingbettercodethanyou.gamerpluginframework.command.RegisterForCommand;
-import com.github.writingbettercodethanyou.gamerpluginframework.message.MessageService;
 import me.btelnyy.core.constant.MessageKeys;
+import me.btelnyy.core.service.MessageService;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.command.Command;
@@ -12,7 +11,6 @@ import org.bukkit.entity.Player;
 
 import java.util.Map;
 
-@RegisterForCommand("whereami")
 public class CommandCoords implements CommandExecutor {
 
     private final MessageService messageService;
